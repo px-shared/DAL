@@ -1,0 +1,3 @@
+select * from usage where strikes > 0 and "updatedAt" > NOW() - INTERVAL '1 DAY' order by "updatedAt" DESC;
+select * from short ORDER BY clicks DESC LIMIT 30;
+select short.id, short.destination from short inner join organisation on "organisationId" = "organisation"."id" inner join subscription on "subscription"."organisationId" = "organisation"."id" where "subscription"."planProviderId" = 'free-tier' and "short"."createdAt" > NOW() - INTERVAL '5 DAY' order by "short"."updatedAt" DESC;

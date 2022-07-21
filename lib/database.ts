@@ -1,0 +1,100 @@
+import { EntitySchema, getConnectionManager } from 'typeorm';
+import { OrganisationSchema } from '../models/Organisation';
+import { DomainSchema } from '../models/Domain';
+import { SessionSchema } from '../models/Session';
+import { ShortSchema } from '../models/Short';
+import { TagSchema } from '../models/Tag';
+import { PixelSchema } from '../models/Pixel';
+import { FeedbackSchema } from '../models/Feedback';
+import { SettingsSchema } from '../models/Settings';
+import { PreferencesSchema } from '../models/Preferences';
+import { UserSchema } from '../models/User';
+import { VerificationSchema } from '../models/Verification';
+import { UsageSchema } from '../models/Usage';
+import { SubscriptionSchema } from '../models/Subscription';
+import { PlanSchema } from '../models/Plan';
+import { DefaultsSchema } from '../models/Defaults';
+import { ShareSchema } from '../models/Share';
+import { AccessTokenSchema } from '../models/AccessToken';
+
+const connectionOptions = {
+  default: {
+    type: process.env.TYPEORM_CONNECTION,
+    database: process.env.TYPEORM_DATABASE,
+    host: process.env.TYPEORM_HOST,
+    port: process.env.TYPEORM_PORT,
+    username: process.env.TYPEORM_USERNAME,
+    password: process.env.TYPEORM_PASSWORD,
+    synchronize: process.env.TYPEORM_SYNCHRONIZE == 'true',
+    logging: process.env.TYPEORM_LOGGING == 'true',
+    entities: [
+      OrganisationSchema,
+      DomainSchema,
+      SessionSchema,
+      ShortSchema,
+      TagSchema,
+      PixelSchema,
+      FeedbackSchema,
+      SettingsSchema,
+      PreferencesSchema,
+      UserSchema,
+      VerificationSchema,
+      UsageSchema,
+      SubscriptionSchema,
+      PlanSchema,
+      DefaultsSchema,
+      ShareSchema,
+      AccessTokenSchema
+    ]
+  }
+};
+
+const transform = (entity: EntitySchema, databaseType: string) => {
+  const conditions = {
+    type: {
+      postgres: {
+        timestamp: 'timestamptz'
+      },
+      sqlite: {
+        timestamp: 'datetime'
+      }
+    }
+  };
+
+  for (const index in entity.options.columns) {
+    const match = conditions.type[databaseType];
+
+    if (match) {
+      for (const condition in match) {
+        if (condition === entity.options.columns[index].type) {
+          entity.options.columns[index].type = match[condition];
+        }
+      }
+    }
+  }
+
+  return entity;
+};
+
+connectionOptions.default.entities = connectionOptions.default.entities.map(
+  (entity: EntitySchema<any>) =>
+    transform(entity, connectionOptions.default.type)
+);
+
+export const ensureConnection = async (name = 'default') => {
+  const connectionManager = getConnectionManager();
+
+  if (connectionManager.has(name)) {
+    const connection = connectionManager.get(name);
+
+    if (!connection.isConnected) {
+      await connection.connect();
+    }
+
+    return connection;
+  }
+
+  return await connectionManager
+    .create({ name, ...connectionOptions[name] })
+    .connect();
+};

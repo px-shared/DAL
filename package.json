@@ -1,0 +1,29 @@
+{
+  "name": "database",
+  "private": true,
+  "scripts": {
+    "typeorm": "cross-env TS_NODE_PROJECT=tsconfig.typeorm.json TS_NODE_TRANSPILE_ONLY=true ts-node -r ts-node/register ./node_modules/typeorm/cli.js",
+    "pretty": "prettier --write \"{,!(.next)/**/}*.{js,jsx,json,ts,tsx,css}\""
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "pg": "^8.6.0",
+    "typeorm": "^0.2.41"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.6",
+    "@types/bcrypt": "^5.0.0",
+    "cross-env": "^7.0.3",
+    "prettier": "^2.1.2",
+    "ts-node": "^9.1.1"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": true,
+    "printWidth": 80,
+    "jsxSingleQuote": true,
+    "bracketSpacing": true,
+    "tabWidth": 2,
+    "trailingComma": "none"
+  }
+}
