@@ -3,7 +3,7 @@ import Organisation from './Organisation';
 import User from './User';
 
 export default interface AccessToken {
-  id: string;
+  id: number;
 
   name: string;
   token: string;
@@ -37,14 +37,16 @@ export const AccessTokenSchema = new EntitySchema<AccessToken>({
     },
     token: {
       type: 'varchar',
-      unique: true
+      unique: true,
+      select: false
     },
     permissions: {
       type: 'simple-json',
       nullable: true
     },
     expires: {
-      type: 'timestamp'
+      type: 'timestamp',
+      nullable: true
     },
     accessedAt: {
       type: 'timestamp'
