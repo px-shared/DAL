@@ -14,7 +14,6 @@ import { UsageSchema } from '../models/Usage';
 import { SubscriptionSchema } from '../models/Subscription';
 import { PlanSchema } from '../models/Plan';
 import { DefaultsSchema } from '../models/Defaults';
-import { ShareSchema } from '../models/Share';
 import { AccessTokenSchema } from '../models/AccessToken';
 
 const connectionOptions = {
@@ -43,7 +42,6 @@ const connectionOptions = {
       SubscriptionSchema,
       PlanSchema,
       DefaultsSchema,
-      ShareSchema,
       AccessTokenSchema
     ]
   }
