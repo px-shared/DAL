@@ -9,7 +9,6 @@ import Short from './Short';
 import Pixel from './Pixel';
 import Domain from './Domain';
 import Defaults from './Defaults';
-import Share from './Share';
 import AccessToken from './AccessToken';
 
 export default interface User {
@@ -28,7 +27,6 @@ export default interface User {
   shorts: Short[];
   pixels: Pixel[];
   domains: Domain[];
-  shares: Share[];
   accessTokens: AccessToken[];
 
   defaults: Defaults;
@@ -157,12 +155,6 @@ export const UserSchema = new EntitySchema<User>({
     accessTokens: {
       type: 'one-to-many',
       target: 'AccessToken',
-      cascade: true,
-      inverseSide: 'user'
-    },
-    shares: {
-      type: 'one-to-many',
-      target: 'Share',
       cascade: true,
       inverseSide: 'user'
     },

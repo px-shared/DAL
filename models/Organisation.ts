@@ -4,7 +4,6 @@ import AccessToken from './AccessToken';
 import Domain from './Domain';
 import Pixel from './Pixel';
 import Settings from './Settings';
-import Share from './Share';
 import Short from './Short';
 import Subscription from './Subscription';
 import Tag from './Tag';
@@ -33,7 +32,6 @@ export default interface Organisation {
   shorts: Short[];
   pixels: Pixel[];
   domains: Domain[];
-  shares: Share[];
   accessTokens: AccessToken[];
 
   createdAt: Date;
@@ -132,12 +130,6 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     accessTokens: {
       type: 'one-to-many',
       target: 'AccessToken',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    shares: {
-      type: 'one-to-many',
-      target: 'Share',
       cascade: true,
       inverseSide: 'organisation'
     },
