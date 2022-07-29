@@ -22,6 +22,7 @@ export default interface Organisation {
   website: string;
   terms: string;
   logo: string;
+  developer: boolean;
 
   settings: Settings;
   usage: Usage;
@@ -91,6 +92,10 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     logo: {
       type: 'varchar',
       nullable: true
+    },
+    developer: {
+      type: 'boolean',
+      default: false
     },
     createdAt: {
       type: 'timestamp',
