@@ -21,7 +21,6 @@ export default interface Short {
   meta: any;
   parameters: any;
   clicks: number;
-  secret: string;
 
   domain: Domain;
   user: User;
@@ -99,11 +98,6 @@ export const ShortSchema = new EntitySchema<Short>({
     clicks: {
       type: 'int',
       default: 0
-    },
-    secret: {
-      type: 'varchar',
-      nullable: true,
-      select: false
     },
     createdAt: {
       type: 'timestamp',
