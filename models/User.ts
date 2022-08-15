@@ -10,6 +10,7 @@ import Pixel from './Pixel';
 import Domain from './Domain';
 import Defaults from './Defaults';
 import AccessToken from './AccessToken';
+import QR from './QR';
 
 export default interface User {
   id: number;
@@ -27,6 +28,7 @@ export default interface User {
   shorts: Short[];
   pixels: Pixel[];
   domains: Domain[];
+  qrCodes: QR[];
   accessTokens: AccessToken[];
 
   defaults: Defaults;
@@ -143,6 +145,12 @@ export const UserSchema = new EntitySchema<User>({
     pixels: {
       type: 'one-to-many',
       target: 'Pixel',
+      cascade: true,
+      inverseSide: 'user'
+    },
+    qrCodes: {
+      type: 'one-to-many',
+      target: 'QR',
       cascade: true,
       inverseSide: 'user'
     },

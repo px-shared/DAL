@@ -1,6 +1,7 @@
 import { EntitySchema } from 'typeorm';
 import Domain from './Domain';
 import Pixel from './Pixel';
+import QR from './QR';
 import Tag from './Tag';
 import User from './User';
 
@@ -10,6 +11,7 @@ export default interface Defaults {
   domain: Domain;
   pixel: Pixel;
   tag: Tag;
+  qrCode: QR;
 
   user: User;
 
@@ -54,6 +56,14 @@ export const DefaultsSchema = new EntitySchema<Defaults>({
     pixel: {
       type: 'one-to-one',
       target: 'Pixel',
+      inverseSide: 'defaults',
+      joinColumn: true,
+      eager: true,
+      onDelete: 'SET NULL'
+    },
+    qrCode: {
+      type: 'one-to-one',
+      target: 'QR',
       inverseSide: 'defaults',
       joinColumn: true,
       eager: true,

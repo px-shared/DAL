@@ -5,6 +5,7 @@ import Pixel from './Pixel';
 import Session from './Session';
 import User from './User';
 import Tag from './Tag';
+import QR from './QR';
 
 export default interface Short {
   id: string;
@@ -28,6 +29,7 @@ export default interface Short {
   sessions: Session[];
   tags: Tag[];
   pixels: Pixel[];
+  qrCode: QR;
 
   createdAt: Date;
   updatedAt: Date;
@@ -131,6 +133,12 @@ export const ShortSchema = new EntitySchema<Short>({
       target: 'Domain',
       inverseSide: 'shorts',
       onDelete: 'CASCADE'
+    },
+    qrCode: {
+      type: 'many-to-one',
+      target: 'QR',
+      inverseSide: 'shorts',
+      onDelete: 'SET NULL'
     },
     organisation: {
       type: 'many-to-one',

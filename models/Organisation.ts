@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AccessToken from './AccessToken';
 import Domain from './Domain';
 import Pixel from './Pixel';
+import QR from './QR';
 import Settings from './Settings';
 import Short from './Short';
 import Subscription from './Subscription';
@@ -33,6 +34,7 @@ export default interface Organisation {
   shorts: Short[];
   pixels: Pixel[];
   domains: Domain[];
+  qrCodes: QR[];
   accessTokens: AccessToken[];
 
   createdAt: Date;
@@ -165,6 +167,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     pixels: {
       type: 'one-to-many',
       target: 'Pixel',
+      cascade: true,
+      inverseSide: 'organisation'
+    },
+    qrCodes: {
+      type: 'one-to-many',
+      target: 'QR',
       cascade: true,
       inverseSide: 'organisation'
     }

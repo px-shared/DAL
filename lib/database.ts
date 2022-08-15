@@ -15,6 +15,7 @@ import { SubscriptionSchema } from '../models/Subscription';
 import { PlanSchema } from '../models/Plan';
 import { DefaultsSchema } from '../models/Defaults';
 import { AccessTokenSchema } from '../models/AccessToken';
+import { QRSchema } from '../models/QR';
 
 const connectionOptions = {
   default: {
@@ -42,7 +43,8 @@ const connectionOptions = {
       SubscriptionSchema,
       PlanSchema,
       DefaultsSchema,
-      AccessTokenSchema
+      AccessTokenSchema,
+      QRSchema
     ]
   }
 };
