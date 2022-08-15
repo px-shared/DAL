@@ -1,10 +1,10 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class addQrModel1660600901440 implements MigrationInterface {
-    name = 'addQrModel1660600901440'
+export class addQrMigration1660602812012 implements MigrationInterface {
+    name = 'addQrMigration1660602812012'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE TABLE "qr" ("id" SERIAL NOT NULL, "provider" character varying NOT NULL, "identifier" character varying NOT NULL, "reference" character varying NOT NULL, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "deletedAt" TIMESTAMP WITH TIME ZONE, "organisationId" character varying, "userId" integer, CONSTRAINT "PK_49a4316084cad5ba127bd32cfb3" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "qr" ("id" SERIAL NOT NULL, "errorCorrectionLevel" character varying NOT NULL, "margin" integer NOT NULL DEFAULT '1', "format" text, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "deletedAt" TIMESTAMP WITH TIME ZONE, "organisationId" character varying, "userId" integer, CONSTRAINT "PK_49a4316084cad5ba127bd32cfb3" PRIMARY KEY ("id"))`);
         await queryRunner.query(`ALTER TABLE "defaults" ADD "qrCodeId" integer`);
         await queryRunner.query(`ALTER TABLE "defaults" ADD CONSTRAINT "UQ_b713727c5690cc77616f7928813" UNIQUE ("qrCodeId")`);
         await queryRunner.query(`ALTER TABLE "short" ADD "qrCodeId" integer`);

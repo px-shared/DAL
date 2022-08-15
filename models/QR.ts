@@ -7,9 +7,9 @@ import User from './User';
 export default interface QR {
   id: number;
 
-  provider: string;
-  identifier: string;
-  reference: string;
+  errorCorrectionLevel: string;
+  margin: number;
+  format: any;
 
   user: User;
   defaults: Defaults;
@@ -32,17 +32,17 @@ export const QRSchema = new EntitySchema<QR>({
       primary: true,
       generated: true
     },
-    provider: {
+    errorCorrectionLevel: {
       type: 'varchar',
       nullable: false
     },
-    identifier: {
-      type: 'varchar',
-      nullable: false
+    margin: {
+      type: 'int',
+      default: 1
     },
-    reference: {
-      type: 'varchar',
-      nullable: false
+    format: {
+      type: 'simple-json',
+      nullable: true
     },
     createdAt: {
       type: 'timestamp',
