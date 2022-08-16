@@ -7,6 +7,7 @@ import User from './User';
 export default interface QR {
   id: number;
 
+  reference: string;
   errorCorrectionLevel: string;
   margin: number;
   format: any;
@@ -31,6 +32,10 @@ export const QRSchema = new EntitySchema<QR>({
       type: 'int',
       primary: true,
       generated: true
+    },
+    reference: {
+      type: 'varchar',
+      nullable: false
     },
     errorCorrectionLevel: {
       type: 'varchar',
