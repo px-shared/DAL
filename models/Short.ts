@@ -29,7 +29,7 @@ export default interface Short {
   sessions: Session[];
   tags: Tag[];
   pixels: Pixel[];
-  qrCode: QR;
+  qr: QR;
 
   createdAt: Date;
   updatedAt: Date;
@@ -134,7 +134,7 @@ export const ShortSchema = new EntitySchema<Short>({
       inverseSide: 'shorts',
       onDelete: 'CASCADE'
     },
-    qrCode: {
+    qr: {
       type: 'many-to-one',
       target: 'QR',
       inverseSide: 'shorts',

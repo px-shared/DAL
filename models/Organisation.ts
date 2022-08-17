@@ -34,7 +34,7 @@ export default interface Organisation {
   shorts: Short[];
   pixels: Pixel[];
   domains: Domain[];
-  qrCodes: QR[];
+  qrs: QR[];
   accessTokens: AccessToken[];
 
   createdAt: Date;
@@ -170,7 +170,7 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       cascade: true,
       inverseSide: 'organisation'
     },
-    qrCodes: {
+    qrs: {
       type: 'one-to-many',
       target: 'QR',
       cascade: true,

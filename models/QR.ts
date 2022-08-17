@@ -69,25 +69,25 @@ export const QRSchema = new EntitySchema<QR>({
     organisation: {
       type: 'many-to-one',
       target: 'Organisation',
-      inverseSide: 'qrCodes',
+      inverseSide: 'qrs',
       onDelete: 'CASCADE'
     },
     user: {
       type: 'many-to-one',
       target: 'User',
-      inverseSide: 'qrCodes',
+      inverseSide: 'qrs',
       onDelete: 'SET NULL'
     },
     defaults: {
       type: 'one-to-one',
       target: 'Defaults',
-      inverseSide: 'qrCode',
+      inverseSide: 'qr',
       onDelete: 'SET NULL'
     },
     shorts: {
       type: 'one-to-many',
       target: 'Short',
-      inverseSide: 'qrCode'
+      inverseSide: 'qr'
     }
   }
 });

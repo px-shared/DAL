@@ -28,7 +28,7 @@ export default interface User {
   shorts: Short[];
   pixels: Pixel[];
   domains: Domain[];
-  qrCodes: QR[];
+  qrs: QR[];
   accessTokens: AccessToken[];
 
   defaults: Defaults;
@@ -148,7 +148,7 @@ export const UserSchema = new EntitySchema<User>({
       cascade: true,
       inverseSide: 'user'
     },
-    qrCodes: {
+    qrs: {
       type: 'one-to-many',
       target: 'QR',
       cascade: true,

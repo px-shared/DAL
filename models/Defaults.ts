@@ -11,7 +11,7 @@ export default interface Defaults {
   domain: Domain;
   pixel: Pixel;
   tag: Tag;
-  qrCode: QR;
+  qr: QR;
 
   user: User;
 
@@ -61,7 +61,7 @@ export const DefaultsSchema = new EntitySchema<Defaults>({
       eager: true,
       onDelete: 'SET NULL'
     },
-    qrCode: {
+    qr: {
       type: 'one-to-one',
       target: 'QR',
       inverseSide: 'defaults',
