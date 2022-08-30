@@ -77,39 +77,39 @@ export const SessionSchema = new EntitySchema<Session>({
       type: 'varchar',
       nullable: true
     },
-    cs_bytes: {
-      type: 'varchar',
-      nullable: true
-    },
-    x_edge_location: {
-      type: 'varchar',
-      nullable: true
-    },
-    x_host_header: {
-      type: 'varchar',
-      nullable: true
-    },
-    cs_protocol_version: {
-      type: 'varchar',
-      nullable: true
-    },
-    c_ip_version: {
-      type: 'varchar',
-      nullable: true
-    },
-    cs_user_agent: {
-      type: 'varchar',
-      nullable: true
-    },
+    // cs_bytes: {
+    //   type: 'varchar',
+    //   nullable: true
+    // },
+    // x_edge_location: {
+    //   type: 'varchar',
+    //   nullable: true
+    // },
+    // x_host_header: {
+    //   type: 'varchar',
+    //   nullable: true
+    // },
+    // cs_protocol_version: {
+    //   type: 'varchar',
+    //   nullable: true
+    // },
+    // c_ip_version: {
+    //   type: 'varchar',
+    //   nullable: true
+    // },
+    // cs_user_agent: {
+    //   type: 'varchar',
+    //   nullable: true
+    // },
+    // cs_uri_query: {
+    //   type: 'varchar',
+    //   nullable: true
+    // },
     cs_referer: {
       type: 'varchar',
       nullable: true
     },
     cs_cookie: {
-      type: 'varchar',
-      nullable: true
-    },
-    cs_uri_query: {
       type: 'varchar',
       nullable: true
     },
@@ -269,7 +269,7 @@ export const SessionSchema = new EntitySchema<Session>({
       type: 'many-to-one',
       target: 'Short',
       inverseSide: 'sessions',
-      onDelete: 'SET NULL'
+      onDelete: 'CASCADE'
     }
   }
 });
