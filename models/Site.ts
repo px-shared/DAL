@@ -8,6 +8,7 @@ export default interface Site {
   id: number;
 
   reference: string;
+  preview: string;
   data: any;
 
   user: User;
@@ -31,6 +32,10 @@ export const SiteSchema = new EntitySchema<Site>({
       generated: true
     },
     reference: {
+      type: 'varchar',
+      nullable: false
+    },
+    preview: {
       type: 'varchar',
       nullable: false
     },
