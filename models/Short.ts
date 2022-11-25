@@ -6,6 +6,7 @@ import Session from './Session';
 import User from './User';
 import Tag from './Tag';
 import QR from './QR';
+import Site from './Site';
 
 export default interface Short {
   id: string;
@@ -30,6 +31,7 @@ export default interface Short {
   tags: Tag[];
   pixels: Pixel[];
   qr: QR;
+  site: Site;
 
   createdAt: Date;
   updatedAt: Date;
@@ -137,6 +139,12 @@ export const ShortSchema = new EntitySchema<Short>({
     qr: {
       type: 'many-to-one',
       target: 'QR',
+      inverseSide: 'shorts',
+      onDelete: 'SET NULL'
+    },
+    site: {
+      type: 'many-to-one',
+      target: 'Site',
       inverseSide: 'shorts',
       onDelete: 'SET NULL'
     },

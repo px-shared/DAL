@@ -6,6 +6,7 @@ import Pixel from './Pixel';
 import QR from './QR';
 import Settings from './Settings';
 import Short from './Short';
+import Site from './Site';
 import Subscription from './Subscription';
 import Tag from './Tag';
 import Usage from './Usage';
@@ -35,6 +36,7 @@ export default interface Organisation {
   pixels: Pixel[];
   domains: Domain[];
   qrs: QR[];
+  sites: Site[];
   accessTokens: AccessToken[];
 
   createdAt: Date;
@@ -173,6 +175,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     qrs: {
       type: 'one-to-many',
       target: 'QR',
+      cascade: true,
+      inverseSide: 'organisation'
+    },
+    sites: {
+      type: 'one-to-many',
+      target: 'Site',
       cascade: true,
       inverseSide: 'organisation'
     }
