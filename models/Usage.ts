@@ -4,6 +4,7 @@ import Organisation from './Organisation';
 export default interface Usage {
   id: number;
 
+  sites: number;
   shorts: number;
   pixels: number;
   domains: number;
@@ -31,6 +32,10 @@ export const UsageSchema = new EntitySchema<Usage>({
       generated: true
     },
     domains: {
+      type: 'int',
+      default: 0
+    },
+    sites: {
       type: 'int',
       default: 0
     },
