@@ -11,7 +11,6 @@ export default interface Site {
   data: any;
 
   user: User;
-  defaults: Defaults;
   organisation: Organisation;
   shorts: Short[];
 
