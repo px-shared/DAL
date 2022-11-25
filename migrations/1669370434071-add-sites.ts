@@ -1,10 +1,10 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class addSites1669370036230 implements MigrationInterface {
-    name = 'addSites1669370036230'
+export class addSites1669370434071 implements MigrationInterface {
+    name = 'addSites1669370434071'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE TABLE "site" ("id" SERIAL NOT NULL, "reference" character varying NOT NULL, "preview" character varying NOT NULL, "data" text, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "deletedAt" TIMESTAMP WITH TIME ZONE, "organisationId" character varying, "userId" integer, CONSTRAINT "PK_635c0eeabda8862d5b0237b42b4" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "site" ("id" SERIAL NOT NULL, "reference" character varying NOT NULL, "preview" character varying, "data" text NOT NULL, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "deletedAt" TIMESTAMP WITH TIME ZONE, "organisationId" character varying, "userId" integer, CONSTRAINT "PK_635c0eeabda8862d5b0237b42b4" PRIMARY KEY ("id"))`);
         await queryRunner.query(`ALTER TABLE "short" ADD "siteId" integer`);
         await queryRunner.query(`ALTER TABLE "usage" ADD "sites" integer NOT NULL DEFAULT '0'`);
         await queryRunner.query(`ALTER TABLE "short" ADD CONSTRAINT "FK_14f0b9e0cbbf76d7e156b4ce8e8" FOREIGN KEY ("siteId") REFERENCES "site"("id") ON DELETE SET NULL ON UPDATE NO ACTION`);

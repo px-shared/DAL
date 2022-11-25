@@ -37,11 +37,11 @@ export const SiteSchema = new EntitySchema<Site>({
     },
     preview: {
       type: 'varchar',
-      nullable: false
+      nullable: true
     },
     data: {
       type: 'simple-json',
-      nullable: true
+      nullable: false
     },
     createdAt: {
       type: 'timestamp',
