@@ -76,7 +76,6 @@ export const ShortSchema = new EntitySchema<Short>({
     },
     title: {
       type: 'varchar',
-      default: 'Redirect',
       nullable: true
     },
     description: {
