@@ -18,6 +18,7 @@ import { AccessTokenSchema } from '../models/AccessToken';
 import { QRSchema } from '../models/QR';
 import { SiteSchema } from '../models/Site';
 import { EventSchema } from '../models/Event';
+import { IntegrationSchema } from '../models/Integration';
 
 const connectionOptions = {
   default: {
@@ -48,7 +49,8 @@ const connectionOptions = {
       AccessTokenSchema,
       QRSchema,
       SiteSchema,
-      EventSchema
+      EventSchema,
+      IntegrationSchema
     ]
   }
 };

@@ -2,16 +2,14 @@ import { EntitySchema } from 'typeorm';
 import Organisation from './Organisation';
 import User from './User';
 
-export default interface AccessToken {
+export default interface Integration {
   id: number;
 
-  name: string;
-  token: string;
-  permissions: any;
+  provider: string;
+  data: any;
   expires: Date;
   accessedAt: Date;
 
-  user: User;
   organisation: Organisation;
 
   createdAt: Date;
@@ -19,28 +17,23 @@ export default interface AccessToken {
   deletedAt: Date;
 }
 
-export default class AccessToken {}
+export default class Integration {}
 
-export const AccessTokenSchema = new EntitySchema<AccessToken>({
-  name: 'AccessToken',
-  target: AccessToken,
+export const IntegrationSchema = new EntitySchema<Integration>({
+  name: 'Integration',
+  target: Integration,
   columns: {
     id: {
       type: 'int',
       primary: true,
       generated: true
     },
-    name: {
+    provider: {
       type: 'varchar',
       length: 64,
       nullable: false
     },
-    token: {
-      type: 'varchar',
-      unique: true,
-      select: false
-    },
-    permissions: {
+    data: {
       type: 'simple-json',
       nullable: true
     },
@@ -71,14 +64,8 @@ export const AccessTokenSchema = new EntitySchema<AccessToken>({
     organisation: {
       type: 'many-to-one',
       target: 'Organisation',
-      inverseSide: 'accessTokens',
+      inverseSide: 'integrations',
       onDelete: 'CASCADE'
-    },
-    user: {
-      type: 'many-to-one',
-      target: 'User',
-      inverseSide: 'accessTokens',
-      onDelete: 'SET NULL'
     }
   }
 });

@@ -2,6 +2,7 @@ import { EntitySchema } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import AccessToken from './AccessToken';
 import Domain from './Domain';
+import Integration from './Integration';
 import Pixel from './Pixel';
 import QR from './QR';
 import Settings from './Settings';
@@ -38,6 +39,7 @@ export default interface Organisation {
   qrs: QR[];
   sites: Site[];
   accessTokens: AccessToken[];
+  integrations: Integration[];
 
   createdAt: Date;
   updatedAt: Date;
@@ -139,6 +141,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     accessTokens: {
       type: 'one-to-many',
       target: 'AccessToken',
+      cascade: true,
+      inverseSide: 'organisation'
+    },
+    integrations: {
+      type: 'one-to-many',
+      target: 'Integration',
       cascade: true,
       inverseSide: 'organisation'
     },
