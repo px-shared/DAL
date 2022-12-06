@@ -6,10 +6,14 @@ export default interface Integration {
   id: number;
 
   provider: string;
+  data: any;
   token: string;
   secret: string;
   endpoint: string;
-  data: any;
+
+  errorCode: string;
+  errorMessage: string;
+
   expires: Date;
   accessedAt: Date;
 
@@ -36,6 +40,10 @@ export const IntegrationSchema = new EntitySchema<Integration>({
       length: 64,
       nullable: false
     },
+    data: {
+      type: 'simple-json',
+      nullable: true
+    },
     token: {
       type: 'varchar',
       select: false
@@ -47,9 +55,11 @@ export const IntegrationSchema = new EntitySchema<Integration>({
     endpoint: {
       type: 'varchar'
     },
-    data: {
-      type: 'simple-json',
-      nullable: true
+    errorCode: {
+      type: 'varchar'
+    },
+    errorMessage: {
+      type: 'varchar'
     },
     expires: {
       type: 'timestamp',
