@@ -7,6 +7,8 @@ export default interface Integration {
 
   provider: string;
   token: string;
+  secret: string;
+  endpoint: string;
   data: any;
   expires: Date;
   accessedAt: Date;
@@ -37,6 +39,13 @@ export const IntegrationSchema = new EntitySchema<Integration>({
     token: {
       type: 'varchar',
       select: false
+    },
+    secret: {
+      type: 'varchar',
+      select: false
+    },
+    endpoint: {
+      type: 'varchar'
     },
     data: {
       type: 'simple-json',
