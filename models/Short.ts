@@ -7,6 +7,7 @@ import User from './User';
 import Tag from './Tag';
 import QR from './QR';
 import Site from './Site';
+import Event from './Event';
 
 export default interface Short {
   id: string;
@@ -28,6 +29,7 @@ export default interface Short {
   user: User;
   organisation: Organisation;
   sessions: Session[];
+  events: Event[];
   tags: Tag[];
   pixels: Pixel[];
   qr: QR;
@@ -162,6 +164,12 @@ export const ShortSchema = new EntitySchema<Short>({
     sessions: {
       type: 'one-to-many',
       target: 'Session',
+      inverseSide: 'short',
+      cascade: true
+    },
+    events: {
+      type: 'one-to-many',
+      target: 'Event',
       inverseSide: 'short',
       cascade: true
     },
