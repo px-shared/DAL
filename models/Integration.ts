@@ -36,7 +36,6 @@ export const IntegrationSchema = new EntitySchema<Integration>({
     },
     token: {
       type: 'varchar',
-      unique: true,
       select: false
     },
     data: {
