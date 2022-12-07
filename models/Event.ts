@@ -9,7 +9,7 @@ export default interface Event {
   cookies: string;
   performedAt: number;
   priorDelay: number;
-  properties: object;
+  properties: any;
 
   short: Short;
 
