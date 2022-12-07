@@ -45,14 +45,17 @@ export const IntegrationSchema = new EntitySchema<Integration>({
     },
     token: {
       type: 'varchar',
-      select: false
+      select: false,
+      nullable: true
     },
     secret: {
       type: 'varchar',
-      select: false
+      select: false,
+      nullable: true
     },
     endpoint: {
-      type: 'varchar'
+      type: 'varchar',
+      nullable: true
     },
     errorMessage: {
       type: 'varchar',
