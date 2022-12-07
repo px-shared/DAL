@@ -11,7 +11,6 @@ export default interface Integration {
   secret: string;
   endpoint: string;
 
-  errorCode: string;
   errorMessage: string;
 
   expires: Date;
@@ -55,11 +54,9 @@ export const IntegrationSchema = new EntitySchema<Integration>({
     endpoint: {
       type: 'varchar'
     },
-    errorCode: {
-      type: 'varchar'
-    },
     errorMessage: {
-      type: 'varchar'
+      type: 'varchar',
+      nullable: true
     },
     expires: {
       type: 'timestamp',
