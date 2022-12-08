@@ -8,6 +8,7 @@ export default interface Integration {
   provider: string;
   data: any;
   token: string;
+  refresh: string;
   endpoint: string;
 
   errorMessage: string;
@@ -43,6 +44,10 @@ export const IntegrationSchema = new EntitySchema<Integration>({
       nullable: true
     },
     token: {
+      type: 'varchar',
+      nullable: true
+    },
+    refresh: {
       type: 'varchar',
       nullable: true
     },
