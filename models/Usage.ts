@@ -7,6 +7,8 @@ export default interface Usage {
   sites: number;
   shorts: number;
   pixels: number;
+  qrs: number;
+  events: number;
   domains: number;
   members: number;
   overage: number;
@@ -48,6 +50,14 @@ export const UsageSchema = new EntitySchema<Usage>({
       default: 0
     },
     pixels: {
+      type: 'int',
+      default: 0
+    },
+    qrs: {
+      type: 'int',
+      default: 0
+    },
+    events: {
       type: 'int',
       default: 0
     },
