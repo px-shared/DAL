@@ -4,11 +4,12 @@ import Organisation from './Organisation';
 export default interface Usage {
   id: number;
 
-  sites: number;
   shorts: number;
+  events: number;
+
   pixels: number;
   qrs: number;
-  events: number;
+  sites: number;
   domains: number;
   members: number;
   overage: number;
@@ -17,12 +18,18 @@ export default interface Usage {
 
   organisation: Organisation;
 
+  resetAt: Date;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
 }
 
-export default class Usage {}
+export default class Usage {
+  constructor() {
+    this.resetAt = new Date();
+    this.resetAt.setDate(this.resetAt.getDate() + 30);
+  }
+}
 
 export const UsageSchema = new EntitySchema<Usage>({
   name: 'Usage',
@@ -72,6 +79,10 @@ export const UsageSchema = new EntitySchema<Usage>({
     tokens: {
       type: 'int',
       default: 0
+    },
+    resetAt: {
+      type: 'timestamp',
+      createDate: true
     },
     createdAt: {
       type: 'timestamp',
