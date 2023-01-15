@@ -1,6 +1,7 @@
 import { EntitySchema } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import AccessToken from './AccessToken';
+import Asset from './Asset';
 import Domain from './Domain';
 import Integration from './Integration';
 import Pixel from './Pixel';
@@ -34,6 +35,7 @@ export default interface Organisation {
   tags: Tag[];
   users: User[];
   shorts: Short[];
+  assets: Asset[];
   pixels: Pixel[];
   domains: Domain[];
   qrs: QR[];
@@ -177,6 +179,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     pixels: {
       type: 'one-to-many',
       target: 'Pixel',
+      cascade: true,
+      inverseSide: 'organisation'
+    },
+    assets: {
+      type: 'one-to-many',
+      target: 'Asset',
       cascade: true,
       inverseSide: 'organisation'
     },

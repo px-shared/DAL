@@ -15,6 +15,7 @@ export default interface Usage {
   overage: number;
   strikes: number;
   tokens: number;
+  assets: number;
 
   organisation: Organisation;
 
@@ -77,6 +78,10 @@ export const UsageSchema = new EntitySchema<Usage>({
       default: 0
     },
     tokens: {
+      type: 'int',
+      default: 0
+    },
+    assets: {
       type: 'int',
       default: 0
     },
