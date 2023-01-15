@@ -19,6 +19,7 @@ import { QRSchema } from '../models/QR';
 import { SiteSchema } from '../models/Site';
 import { EventSchema } from '../models/Event';
 import { IntegrationSchema } from '../models/Integration';
+import { AssetSchema } from '../models/Asset';
 
 const connectionOptions = {
   default: {
@@ -50,7 +51,8 @@ const connectionOptions = {
       QRSchema,
       SiteSchema,
       EventSchema,
-      IntegrationSchema
+      IntegrationSchema,
+      AssetSchema
     ]
   }
 };
