@@ -1,6 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import Organisation from './Organisation';
-import User from './User';
+
 
 export default interface Integration {
   id: number;

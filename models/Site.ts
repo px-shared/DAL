@@ -1,5 +1,5 @@
 import { EntitySchema } from 'typeorm';
-import Defaults from './Defaults';
+
 import Organisation from './Organisation';
 import Short from './Short';
 import User from './User';
