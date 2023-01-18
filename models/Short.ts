@@ -117,7 +117,7 @@ export const ShortSchema = new EntitySchema<Short>({
     createdAt: {
       type: 'timestamp',
       createDate: true,
-      select: false
+      select: true
     },
     updatedAt: {
       type: 'timestamp',
@@ -127,7 +127,7 @@ export const ShortSchema = new EntitySchema<Short>({
     deletedAt: {
       type: 'timestamp',
       deleteDate: true,
-      select: false
+      select: true
     }
   },
   indices: [
