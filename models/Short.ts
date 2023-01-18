@@ -19,6 +19,8 @@ export default interface Short {
   destination: string;
   title: string;
   description: string;
+  redirect: string;
+  error: string;
   image: string;
   favicon: string;
   meta: any;
@@ -75,6 +77,14 @@ export const ShortSchema = new EntitySchema<Short>({
     },
     destination: {
       type: 'varchar'
+    },
+    redirect: {
+      type: 'varchar',
+      nullable: true
+    },
+    error: {
+      type: 'varchar',
+      nullable: true
     },
     title: {
       type: 'varchar',
