@@ -13,6 +13,7 @@ export default interface Short {
   id: string;
 
   route: string;
+  api: boolean;
   active: boolean;
   consent: boolean;
   favourite: boolean;
@@ -62,6 +63,10 @@ export const ShortSchema = new EntitySchema<Short>({
       type: 'varchar',
       length: 32,
       nullable: true
+    },
+    api: {
+      type: 'boolean',
+      default: false
     },
     active: {
       type: 'boolean',
