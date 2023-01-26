@@ -20,6 +20,7 @@ import { SiteSchema } from '../models/Site';
 import { EventSchema } from '../models/Event';
 import { IntegrationSchema } from '../models/Integration';
 import { AssetSchema } from '../models/Asset';
+import { SegmentSchema } from '../models/Segment';
 
 const connectionOptions = {
   default: {
@@ -52,7 +53,8 @@ const connectionOptions = {
       SiteSchema,
       EventSchema,
       IntegrationSchema,
-      AssetSchema
+      AssetSchema,
+      SegmentSchema
     ]
   }
 };

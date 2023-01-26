@@ -6,6 +6,7 @@ import Domain from './Domain';
 import Integration from './Integration';
 import Pixel from './Pixel';
 import QR from './QR';
+import Segment from './Segment';
 import Settings from './Settings';
 import Short from './Short';
 import Site from './Site';
@@ -33,6 +34,7 @@ export default interface Organisation {
   subscription: Subscription;
 
   tags: Tag[];
+  segments: Segment[];
   users: User[];
   shorts: Short[];
   assets: Asset[];
@@ -173,6 +175,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     tags: {
       type: 'one-to-many',
       target: 'Tag',
+      cascade: true,
+      inverseSide: 'organisation'
+    },
+    segments: {
+      type: 'one-to-many',
+      target: 'Segment',
       cascade: true,
       inverseSide: 'organisation'
     },

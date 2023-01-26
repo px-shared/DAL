@@ -13,6 +13,7 @@ import AccessToken from './AccessToken';
 import QR from './QR';
 import Site from './Site';
 import Asset from './Asset';
+import Segment from './Segment';
 
 export default interface User {
   id: number;
@@ -27,6 +28,7 @@ export default interface User {
   feedback: Feedback[];
   verifications: Verification[];
   tags: Tag[];
+  segments: Segment[];
   shorts: Short[];
   pixels: Pixel[];
   domains: Domain[];
@@ -143,6 +145,12 @@ export const UserSchema = new EntitySchema<User>({
     tags: {
       type: 'one-to-many',
       target: 'Tag',
+      cascade: true,
+      inverseSide: 'user'
+    },
+    segments: {
+      type: 'one-to-many',
+      target: 'Segment',
       cascade: true,
       inverseSide: 'user'
     },

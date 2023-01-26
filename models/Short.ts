@@ -8,6 +8,7 @@ import Tag from './Tag';
 import QR from './QR';
 import Site from './Site';
 import Event from './Event';
+import Segment from './Segment';
 
 export default interface Short {
   id: string;
@@ -34,6 +35,7 @@ export default interface Short {
   sessions: Session[];
   events: Event[];
   tags: Tag[];
+  segments: Segment[];
   pixels: Pixel[];
   qr: QR;
   site: Site;
@@ -191,6 +193,13 @@ export const ShortSchema = new EntitySchema<Short>({
     tags: {
       type: 'many-to-many',
       target: 'Tag',
+      inverseSide: 'shorts',
+      cascade: true,
+      joinTable: true
+    },
+    segments: {
+      type: 'many-to-many',
+      target: 'Segment',
       inverseSide: 'shorts',
       cascade: true,
       joinTable: true
