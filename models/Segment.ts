@@ -78,11 +78,11 @@ export const SegmentSchema = new EntitySchema<Segment>({
 });
 
 // {
-//   "operator": "OR", // OR, AND
+//   "operator": "OR",
 //   "rules": [
 //     {
-//       "member": "tag", // tag, destination, shortId, UTMs, owner
-//       "operator": "exact", // exact, starts, ends, contains
+//       "member": "tag",
+//       "operator": "exact",
 //       "target": "example"
 //     },
 //     {
