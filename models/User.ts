@@ -23,7 +23,6 @@ export default interface User {
   password: string;
   verified: Date;
   ipAddress: string;
-  invalidate: boolean;
   role: 'owner' | 'administrator' | 'user';
 
   feedback: Feedback[];
@@ -42,6 +41,7 @@ export default interface User {
   preferences: Preferences;
   organisation: Organisation;
 
+  invalidatedAt: Date;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
@@ -79,10 +79,6 @@ export const UserSchema = new EntitySchema<User>({
       type: 'varchar',
       default: 'user'
     },
-    invalidate: {
-      type: 'boolean',
-      default: false
-    },
     email: {
       type: 'varchar',
       unique: true
@@ -100,6 +96,10 @@ export const UserSchema = new EntitySchema<User>({
       // confirmed this email address was active and used by the user (e.g.
       // when an email sign in link is clicked on and verified). Is null
       // if the email address specified has never been verified.
+      type: 'timestamp',
+      nullable: true
+    },
+    invalidatedAt: {
       type: 'timestamp',
       nullable: true
     },
