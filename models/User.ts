@@ -23,6 +23,7 @@ export default interface User {
   password: string;
   verified: Date;
   ipAddress: string;
+  invalidate: boolean;
   role: 'owner' | 'administrator' | 'user';
 
   feedback: Feedback[];
@@ -77,6 +78,10 @@ export const UserSchema = new EntitySchema<User>({
     role: {
       type: 'varchar',
       default: 'user'
+    },
+    invalidate: {
+      type: 'boolean',
+      default: false
     },
     email: {
       type: 'varchar',
