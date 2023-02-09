@@ -63,7 +63,7 @@ export const ShortSchema = new EntitySchema<Short>({
     },
     route: {
       type: 'varchar',
-      length: 32,
+      length: 64,
       nullable: true
     },
     api: {
