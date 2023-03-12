@@ -5,5 +5,5 @@ select short.id, short.destination from short inner join organisation on "organi
 select pg_size_pretty (pg_relation_size('session'));
 select count(*) from session where "createdAt" between '2022-12-01 01:20:00.947+00' and '2022-12-01 05:20:00.947+00';
 
-select short.id, short.destination, short.redirect, short.error, "short"."createdAt", "short"."deletedAt" from short inner join organisation on "organisationId" = "organisation"."id" inner join subscription on "subscription"."organisationId" = "organisation"."id" where "subscription"."planProviderId" = 'sumo-tier' order by "short"."createdAt" DESC;
+select short.id, short.destination, short.redirect, short.error, "short"."createdAt", "short"."deletedAt" from short inner join organisation on "organisationId" = "organisation"."id" inner join subscription on "subscription"."organisationId" = "organisation"."id" where "subscription"."planProviderId" = 'free-tier' and "short"."createdAt" > NOW() - INTERVAL '30 DAY' order by "short"."createdAt" DESC;
 

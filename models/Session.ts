@@ -20,6 +20,8 @@ export default interface Session {
   cs_uri_query: string;
   x_edge_response_result_type: string;
   c_country: string;
+  c_region: string;
+  c_city: string;
   deviceType: string;
   OSName: string;
   OSVersion: string;
@@ -118,6 +120,14 @@ export const SessionSchema = new EntitySchema<Session>({
       nullable: true
     },
     c_country: {
+      type: 'varchar',
+      nullable: true
+    },
+    c_region: {
+      type: 'varchar',
+      nullable: true
+    },
+    c_city: {
       type: 'varchar',
       nullable: true
     },
