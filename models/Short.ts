@@ -33,7 +33,6 @@ export default interface Short {
   user: User;
   organisation: Organisation;
   sessions: Session[];
-  events: Event[];
   tags: Tag[];
   segments: Segment[];
   pixels: Pixel[];
@@ -181,12 +180,6 @@ export const ShortSchema = new EntitySchema<Short>({
     sessions: {
       type: 'one-to-many',
       target: 'Session',
-      inverseSide: 'short',
-      cascade: true
-    },
-    events: {
-      type: 'one-to-many',
-      target: 'Event',
       inverseSide: 'short',
       cascade: true
     },

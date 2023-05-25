@@ -42,6 +42,7 @@ export default interface Session {
   gdpr_consent_date: Date;
 
   short: Short;
+  events: Event[];
 
   createdAt: Date;
   updatedAt: Date;
@@ -280,6 +281,12 @@ export const SessionSchema = new EntitySchema<Session>({
       target: 'Short',
       inverseSide: 'sessions',
       onDelete: 'CASCADE'
+    },
+    events: {
+      type: 'one-to-many',
+      target: 'Event',
+      inverseSide: 'session',
+      cascade: true
     }
   }
 });

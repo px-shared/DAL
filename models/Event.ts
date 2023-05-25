@@ -1,5 +1,5 @@
 import { EntitySchema } from 'typeorm';
-import Short from './Short';
+import Session from './Session';
 
 export default interface Event {
   id: number;
@@ -10,8 +10,10 @@ export default interface Event {
   performedAt: number;
   priorDelay: number;
   properties: any;
+  cfid: string;
+  uid: string;
 
-  short: Short;
+  session: Session;
 
   createdAt: Date;
   updatedAt: Date;
@@ -50,6 +52,15 @@ export const EventSchema = new EntitySchema<Event>({
     properties: {
       type: 'simple-json'
     },
+    cfid: {
+      type: 'varchar',
+      nullable: true
+    },
+    uid: {
+      type: 'varchar',
+      nullable: true,
+      length: 32
+    },
     createdAt: {
       type: 'timestamp',
       createDate: true
@@ -64,9 +75,9 @@ export const EventSchema = new EntitySchema<Event>({
     }
   },
   relations: {
-    short: {
+    session: {
       type: 'many-to-one',
-      target: 'Short',
+      target: 'Session',
       inverseSide: 'events',
       onDelete: 'CASCADE'
     }
