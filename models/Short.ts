@@ -27,6 +27,7 @@ export default interface Short {
   favicon: string;
   meta: any;
   parameters: any;
+  events: number;
   clicks: number;
 
   domain: Domain;
@@ -117,6 +118,10 @@ export const ShortSchema = new EntitySchema<Short>({
       nullable: true
     },
     clicks: {
+      type: 'int',
+      default: 0
+    },
+    events: {
       type: 'int',
       default: 0
     },
