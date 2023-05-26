@@ -9,7 +9,6 @@ export default interface Event {
   referrer: string;
   properties: any;
   meta: any;
-  performedAt: number;
   cfid: string;
 
   session: Session;
@@ -48,9 +47,6 @@ export const EventSchema = new EntitySchema<Event>({
     meta: {
       type: 'simple-json',
       nullable: true
-    },
-    performedAt: {
-      type: 'bigint'
     },
     cfid: {
       type: 'varchar'
