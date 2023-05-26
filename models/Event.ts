@@ -4,14 +4,13 @@ import Session from './Session';
 export default interface Event {
   id: number;
 
-  path: string;
   action: string;
-  cookies: string;
-  performedAt: number;
-  priorDelay: number;
+  source: string;
+  referrer: string;
   properties: any;
+  meta: any;
+  performedAt: number;
   cfid: string;
-  uid: string;
 
   session: Session;
 
@@ -31,35 +30,30 @@ export const EventSchema = new EntitySchema<Event>({
       primary: true,
       generated: true
     },
-    path: {
+    action: {
       type: 'varchar',
       length: 128
     },
-    action: {
-      type: 'varchar',
-      length: 64
+    source: {
+      type: 'varchar'
     },
-    cookies: {
+    referrer: {
       type: 'varchar',
-      length: 64
+      nullable: true
+    },
+    properties: {
+      type: 'simple-json',
+      nullable: true
+    },
+    meta: {
+      type: 'simple-json',
+      nullable: true
     },
     performedAt: {
       type: 'bigint'
     },
-    priorDelay: {
-      type: 'bigint'
-    },
-    properties: {
-      type: 'simple-json'
-    },
     cfid: {
-      type: 'varchar',
-      nullable: true
-    },
-    uid: {
-      type: 'varchar',
-      nullable: true,
-      length: 32
+      type: 'varchar'
     },
     createdAt: {
       type: 'timestamp',
