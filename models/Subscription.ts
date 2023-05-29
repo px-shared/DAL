@@ -61,7 +61,6 @@ export const SubscriptionSchema = new EntitySchema<Subscription>({
     },
     promotionCode: {
       type: 'varchar',
-      length: 128,
       nullable: true
     },
     status: {
