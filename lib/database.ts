@@ -32,6 +32,9 @@ const connectionOptions = {
     password: process.env.TYPEORM_PASSWORD,
     synchronize: process.env.TYPEORM_SYNCHRONIZE == 'true',
     logging: process.env.TYPEORM_LOGGING == 'true',
+    cache: {
+      duration: 15000
+    },
     entities: [
       OrganisationSchema,
       DomainSchema,
