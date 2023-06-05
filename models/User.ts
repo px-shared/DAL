@@ -14,6 +14,7 @@ import QR from './QR';
 import Site from './Site';
 import Asset from './Asset';
 import Segment from './Segment';
+import Audit from './Audit';
 
 export default interface User {
   id: number;
@@ -33,6 +34,7 @@ export default interface User {
   pixels: Pixel[];
   domains: Domain[];
   assets: Asset[];
+  audit: Audit[];
   qrs: QR[];
   sites: Site[];
   accessTokens: AccessToken[];
@@ -200,6 +202,12 @@ export const UserSchema = new EntitySchema<User>({
       target: 'Short',
       cascade: true,
       inverseSide: 'user'
+    },
+    audit: {
+      type: 'one-to-many',
+      target: 'Audit',
+      cascade: true,
+      inverseSide: 'organisation'
     }
   }
 });

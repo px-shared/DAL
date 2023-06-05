@@ -21,6 +21,8 @@ import { EventSchema } from '../models/Event';
 import { IntegrationSchema } from '../models/Integration';
 import { AssetSchema } from '../models/Asset';
 import { SegmentSchema } from '../models/Segment';
+import { AuditSchema } from '../models/Audit';
+import { ShortSubscriber } from '../subscribers/Short';
 
 const connectionOptions = {
   default: {
@@ -36,6 +38,7 @@ const connectionOptions = {
       duration: 15000
     },
     entities: [
+      AuditSchema,
       OrganisationSchema,
       DomainSchema,
       SessionSchema,
@@ -59,6 +62,7 @@ const connectionOptions = {
       AssetSchema,
       SegmentSchema
     ]
+    // subscribers: [ShortSubscriber]
   }
 };
 
