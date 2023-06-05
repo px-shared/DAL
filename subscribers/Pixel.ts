@@ -41,14 +41,14 @@ export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
   }
 
   async beforeRemove(event: RemoveEvent<Pixel>) {
-    await createAudit(
-      event.connection,
-      pickEntity<Pixel>(PixelSchema, event.entity),
-      event.metadata.name,
-      event.entity?.id,
-      event.queryRunner?.data?.user,
-      event.queryRunner?.data?.organisation,
-      'REMOVE'
-    );
+    // await createAudit(
+    //   event.connection,
+    //   pickEntity<Pixel>(PixelSchema, event.entity),
+    //   event.metadata.name,
+    //   event.entity?.id,
+    //   event.queryRunner?.data?.user,
+    //   event.queryRunner?.data?.organisation,
+    //   'REMOVE'
+    // );
   }
 }

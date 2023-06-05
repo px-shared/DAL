@@ -69,13 +69,13 @@ const connectionOptions = {
       SegmentSchema
     ],
     subscribers: [
-      // ShortSubscriber,
-      // TagSubscriber,
-      // PixelSubscriber,
-      // DomainSubscriber,
-      // AccessTokenSubscriber,
-      // QRSubscriber,
-      // SegmentSubscriber
+      ShortSubscriber,
+      TagSubscriber,
+      PixelSubscriber,
+      DomainSubscriber,
+      AccessTokenSubscriber,
+      QRSubscriber,
+      SegmentSubscriber
     ]
   }
 };

@@ -41,14 +41,14 @@ export class QRSubscriber implements EntitySubscriberInterface<QR> {
   }
 
   async beforeRemove(event: RemoveEvent<QR>) {
-    await createAudit(
-      event.connection,
-      pickEntity<QR>(QRSchema, event.entity),
-      event.metadata.name,
-      event.entity?.id,
-      event.queryRunner?.data?.user,
-      event.queryRunner?.data?.organisation,
-      'REMOVE'
-    );
+    // await createAudit(
+    //   event.connection,
+    //   pickEntity<QR>(QRSchema, event.entity),
+    //   event.metadata.name,
+    //   event.entity?.id,
+    //   event.queryRunner?.data?.user,
+    //   event.queryRunner?.data?.organisation,
+    //   'REMOVE'
+    // );
   }
 }

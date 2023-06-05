@@ -41,14 +41,14 @@ export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   }
 
   async beforeRemove(event: RemoveEvent<Tag>) {
-    await createAudit(
-      event.connection,
-      pickEntity<Tag>(TagSchema, event.entity),
-      event.metadata.name,
-      event.entity?.id,
-      event.queryRunner?.data?.user,
-      event.queryRunner?.data?.organisation,
-      'REMOVE'
-    );
+    // await createAudit(
+    //   event.connection,
+    //   pickEntity<Tag>(TagSchema, event.entity),
+    //   event.metadata.name,
+    //   event.entity?.id,
+    //   event.queryRunner?.data?.user,
+    //   event.queryRunner?.data?.organisation,
+    //   'REMOVE'
+    // );
   }
 }

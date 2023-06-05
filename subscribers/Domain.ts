@@ -41,14 +41,14 @@ export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   }
 
   async beforeRemove(event: RemoveEvent<Domain>) {
-    await createAudit(
-      event.connection,
-      pickEntity<Domain>(DomainSchema, event.entity),
-      event.metadata.name,
-      event.entity?.id,
-      event.queryRunner?.data?.user,
-      event.queryRunner?.data?.organisation,
-      'REMOVE'
-    );
+    // await createAudit(
+    //   event.connection,
+    //   pickEntity<Domain>(DomainSchema, event.entity),
+    //   event.metadata.name,
+    //   event.entity?.id,
+    //   event.queryRunner?.data?.user,
+    //   event.queryRunner?.data?.organisation,
+    //   'REMOVE'
+    // );
   }
 }

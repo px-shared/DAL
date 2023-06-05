@@ -41,14 +41,14 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
   }
 
   async beforeRemove(event: RemoveEvent<Short>) {
-    await createAudit(
-      event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
-      event.metadata.name,
-      event.entity?.id,
-      event.queryRunner?.data?.user,
-      event.queryRunner?.data?.organisation,
-      'REMOVE'
-    );
+    // await createAudit(
+    //   event.connection,
+    //   pickEntity<Short>(ShortSchema, event.entity),
+    //   event.metadata.name,
+    //   event.entity?.id,
+    //   event.queryRunner?.data?.user,
+    //   event.queryRunner?.data?.organisation,
+    //   'REMOVE'
+    // );
   }
 }

@@ -41,14 +41,14 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   }
 
   async beforeRemove(event: RemoveEvent<Segment>) {
-    await createAudit(
-      event.connection,
-      pickEntity<Segment>(SegmentSchema, event.entity),
-      event.metadata.name,
-      event.entity?.id,
-      event.queryRunner?.data?.user,
-      event.queryRunner?.data?.organisation,
-      'REMOVE'
-    );
+    // await createAudit(
+    //   event.connection,
+    //   pickEntity<Segment>(SegmentSchema, event.entity),
+    //   event.metadata.name,
+    //   event.entity?.id,
+    //   event.queryRunner?.data?.user,
+    //   event.queryRunner?.data?.organisation,
+    //   'REMOVE'
+    // );
   }
 }

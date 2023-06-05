@@ -43,14 +43,14 @@ export class AccessTokenSubscriber
   }
 
   async beforeRemove(event: RemoveEvent<AccessToken>) {
-    await createAudit(
-      event.connection,
-      pickEntity<AccessToken>(AccessTokenSchema, event.entity),
-      event.metadata.name,
-      event.entity?.id,
-      event.queryRunner?.data?.user,
-      event.queryRunner?.data?.organisation,
-      'REMOVE'
-    );
+    // await createAudit(
+    //   event.connection,
+    //   pickEntity<AccessToken>(AccessTokenSchema, event.entity),
+    //   event.metadata.name,
+    //   event.entity?.id,
+    //   event.queryRunner?.data?.user,
+    //   event.queryRunner?.data?.organisation,
+    //   'REMOVE'
+    // );
   }
 }
