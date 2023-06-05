@@ -13,7 +13,10 @@ export const createAudit = async (
   action: 'INSERT' | 'UPDATE' | 'REMOVE'
 ) => {
   try {
-    connection.manager.insert(
+    if (!connection) return;
+    if (!organisation) return;
+
+    return connection.manager.insert(
       AuditSchema,
       new Audit(action, entity, entityId, payload, user, organisation)
     );

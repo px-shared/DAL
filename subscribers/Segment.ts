@@ -7,19 +7,19 @@ import {
   UpdateEvent
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
-import Short, { ShortSchema } from '../models/Short';
+import Segment, { SegmentSchema } from '../models/Segment';
 import { pickEntity } from '../lib/util';
 
 @EventSubscriber()
-export class ShortSubscriber implements EntitySubscriberInterface<Short> {
+export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   listenTo() {
-    return Short;
+    return Segment;
   }
 
-  async beforeInsert(event: InsertEvent<Short>) {
+  async beforeInsert(event: InsertEvent<Segment>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<Segment>(SegmentSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -28,10 +28,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeUpdate(event: UpdateEvent<Short>) {
+  async beforeUpdate(event: UpdateEvent<Segment>) {
     await createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(ShortSchema, event.entity),
+      pickEntity<ObjectLiteral>(SegmentSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -40,10 +40,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeRemove(event: RemoveEvent<Short>) {
+  async beforeRemove(event: RemoveEvent<Segment>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<Segment>(SegmentSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.queryRunner?.data?.user,

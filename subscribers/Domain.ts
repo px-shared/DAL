@@ -7,19 +7,19 @@ import {
   UpdateEvent
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
-import Short, { ShortSchema } from '../models/Short';
+import Domain, { DomainSchema } from '../models/Domain';
 import { pickEntity } from '../lib/util';
 
 @EventSubscriber()
-export class ShortSubscriber implements EntitySubscriberInterface<Short> {
+export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   listenTo() {
-    return Short;
+    return Domain;
   }
 
-  async beforeInsert(event: InsertEvent<Short>) {
+  async beforeInsert(event: InsertEvent<Domain>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<Domain>(DomainSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -28,10 +28,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeUpdate(event: UpdateEvent<Short>) {
+  async beforeUpdate(event: UpdateEvent<Domain>) {
     await createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(ShortSchema, event.entity),
+      pickEntity<ObjectLiteral>(DomainSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -40,10 +40,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeRemove(event: RemoveEvent<Short>) {
+  async beforeRemove(event: RemoveEvent<Domain>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<Domain>(DomainSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.queryRunner?.data?.user,

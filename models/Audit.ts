@@ -33,7 +33,7 @@ export default class Audit {
     this.entityId = entityId;
     this.user = user;
     this.organisation = organisation;
-    this.payload = { ...payload, user: undefined, organisation: undefined };
+    this.payload = payload;
   }
 }
 

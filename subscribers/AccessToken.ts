@@ -7,19 +7,21 @@ import {
   UpdateEvent
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
-import Short, { ShortSchema } from '../models/Short';
+import AccessToken, { AccessTokenSchema } from '../models/AccessToken';
 import { pickEntity } from '../lib/util';
 
 @EventSubscriber()
-export class ShortSubscriber implements EntitySubscriberInterface<Short> {
+export class AccessTokenSubscriber
+  implements EntitySubscriberInterface<AccessToken>
+{
   listenTo() {
-    return Short;
+    return AccessToken;
   }
 
-  async beforeInsert(event: InsertEvent<Short>) {
+  async beforeInsert(event: InsertEvent<AccessToken>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<AccessToken>(AccessTokenSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -28,10 +30,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeUpdate(event: UpdateEvent<Short>) {
+  async beforeUpdate(event: UpdateEvent<AccessToken>) {
     await createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(ShortSchema, event.entity),
+      pickEntity<ObjectLiteral>(AccessTokenSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -40,10 +42,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeRemove(event: RemoveEvent<Short>) {
+  async beforeRemove(event: RemoveEvent<AccessToken>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<AccessToken>(AccessTokenSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.queryRunner?.data?.user,

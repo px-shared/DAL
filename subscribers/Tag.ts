@@ -7,19 +7,19 @@ import {
   UpdateEvent
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
-import Short, { ShortSchema } from '../models/Short';
+import Tag, { TagSchema } from '../models/Tag';
 import { pickEntity } from '../lib/util';
 
 @EventSubscriber()
-export class ShortSubscriber implements EntitySubscriberInterface<Short> {
+export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   listenTo() {
-    return Short;
+    return Tag;
   }
 
-  async beforeInsert(event: InsertEvent<Short>) {
+  async beforeInsert(event: InsertEvent<Tag>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<Tag>(TagSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -28,10 +28,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeUpdate(event: UpdateEvent<Short>) {
+  async beforeUpdate(event: UpdateEvent<Tag>) {
     await createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(ShortSchema, event.entity),
+      pickEntity<ObjectLiteral>(TagSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -40,10 +40,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeRemove(event: RemoveEvent<Short>) {
+  async beforeRemove(event: RemoveEvent<Tag>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<Tag>(TagSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.queryRunner?.data?.user,

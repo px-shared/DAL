@@ -7,19 +7,19 @@ import {
   UpdateEvent
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
-import Short, { ShortSchema } from '../models/Short';
+import QR, { QRSchema } from '../models/QR';
 import { pickEntity } from '../lib/util';
 
 @EventSubscriber()
-export class ShortSubscriber implements EntitySubscriberInterface<Short> {
+export class QRSubscriber implements EntitySubscriberInterface<QR> {
   listenTo() {
-    return Short;
+    return QR;
   }
 
-  async beforeInsert(event: InsertEvent<Short>) {
+  async beforeInsert(event: InsertEvent<QR>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<QR>(QRSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -28,10 +28,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeUpdate(event: UpdateEvent<Short>) {
+  async beforeUpdate(event: UpdateEvent<QR>) {
     await createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(ShortSchema, event.entity),
+      pickEntity<ObjectLiteral>(QRSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -40,10 +40,10 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
     );
   }
 
-  async beforeRemove(event: RemoveEvent<Short>) {
+  async beforeRemove(event: RemoveEvent<QR>) {
     await createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntity<QR>(QRSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.queryRunner?.data?.user,

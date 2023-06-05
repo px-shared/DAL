@@ -23,6 +23,12 @@ import { AssetSchema } from '../models/Asset';
 import { SegmentSchema } from '../models/Segment';
 import { AuditSchema } from '../models/Audit';
 import { ShortSubscriber } from '../subscribers/Short';
+import { TagSubscriber } from '../subscribers/Tag';
+import { PixelSubscriber } from '../subscribers/Pixel';
+import { DomainSubscriber } from '../subscribers/Domain';
+import { AccessTokenSubscriber } from '../subscribers/AccessToken';
+import { QRSubscriber } from '../subscribers/QR';
+import { SegmentSubscriber } from '../subscribers/Segment';
 
 const connectionOptions = {
   default: {
@@ -61,8 +67,16 @@ const connectionOptions = {
       IntegrationSchema,
       AssetSchema,
       SegmentSchema
+    ],
+    subscribers: [
+      ShortSubscriber,
+      TagSubscriber,
+      PixelSubscriber,
+      DomainSubscriber,
+      AccessTokenSubscriber,
+      QRSubscriber,
+      SegmentSubscriber
     ]
-    // subscribers: [ShortSubscriber]
   }
 };
 
