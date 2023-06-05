@@ -17,7 +17,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   }
 
   async beforeInsert(event: InsertEvent<Segment>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<Segment>(SegmentSchema, event.entity),
       event.metadata.name,
@@ -29,7 +29,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   }
 
   async beforeUpdate(event: UpdateEvent<Segment>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<ObjectLiteral>(SegmentSchema, event.entity),
       event.metadata.name,
@@ -41,7 +41,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   }
 
   async beforeRemove(event: RemoveEvent<Segment>) {
-    // await createAudit(
+    // return createAudit(
     //   event.connection,
     //   pickEntity<Segment>(SegmentSchema, event.entity),
     //   event.metadata.name,

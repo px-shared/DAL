@@ -17,7 +17,7 @@ export class QRSubscriber implements EntitySubscriberInterface<QR> {
   }
 
   async beforeInsert(event: InsertEvent<QR>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<QR>(QRSchema, event.entity),
       event.metadata.name,
@@ -29,7 +29,7 @@ export class QRSubscriber implements EntitySubscriberInterface<QR> {
   }
 
   async beforeUpdate(event: UpdateEvent<QR>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<ObjectLiteral>(QRSchema, event.entity),
       event.metadata.name,
@@ -41,7 +41,7 @@ export class QRSubscriber implements EntitySubscriberInterface<QR> {
   }
 
   async beforeRemove(event: RemoveEvent<QR>) {
-    // await createAudit(
+    // return createAudit(
     //   event.connection,
     //   pickEntity<QR>(QRSchema, event.entity),
     //   event.metadata.name,

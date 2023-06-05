@@ -19,7 +19,7 @@ export class AccessTokenSubscriber
   }
 
   async beforeInsert(event: InsertEvent<AccessToken>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<AccessToken>(AccessTokenSchema, event.entity),
       event.metadata.name,
@@ -31,7 +31,7 @@ export class AccessTokenSubscriber
   }
 
   async beforeUpdate(event: UpdateEvent<AccessToken>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<ObjectLiteral>(AccessTokenSchema, event.entity),
       event.metadata.name,
@@ -43,7 +43,7 @@ export class AccessTokenSubscriber
   }
 
   async beforeRemove(event: RemoveEvent<AccessToken>) {
-    // await createAudit(
+    // return createAudit(
     //   event.connection,
     //   pickEntity<AccessToken>(AccessTokenSchema, event.entity),
     //   event.metadata.name,

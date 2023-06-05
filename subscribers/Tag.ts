@@ -17,7 +17,7 @@ export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   }
 
   async beforeInsert(event: InsertEvent<Tag>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<Tag>(TagSchema, event.entity),
       event.metadata.name,
@@ -29,7 +29,7 @@ export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   }
 
   async beforeUpdate(event: UpdateEvent<Tag>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<ObjectLiteral>(TagSchema, event.entity),
       event.metadata.name,
@@ -41,7 +41,7 @@ export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   }
 
   async beforeRemove(event: RemoveEvent<Tag>) {
-    // await createAudit(
+    // return createAudit(
     //   event.connection,
     //   pickEntity<Tag>(TagSchema, event.entity),
     //   event.metadata.name,

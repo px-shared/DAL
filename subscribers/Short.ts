@@ -17,7 +17,7 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
   }
 
   async beforeInsert(event: InsertEvent<Short>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<Short>(ShortSchema, event.entity),
       event.metadata.name,
@@ -29,7 +29,7 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
   }
 
   async beforeUpdate(event: UpdateEvent<Short>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<ObjectLiteral>(ShortSchema, event.entity),
       event.metadata.name,
@@ -41,7 +41,7 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
   }
 
   async beforeRemove(event: RemoveEvent<Short>) {
-    // await createAudit(
+    // return createAudit(
     //   event.connection,
     //   pickEntity<Short>(ShortSchema, event.entity),
     //   event.metadata.name,

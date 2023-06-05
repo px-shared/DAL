@@ -17,7 +17,7 @@ export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
   }
 
   async beforeInsert(event: InsertEvent<Pixel>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<Pixel>(PixelSchema, event.entity),
       event.metadata.name,
@@ -29,7 +29,7 @@ export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
   }
 
   async beforeUpdate(event: UpdateEvent<Pixel>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<ObjectLiteral>(PixelSchema, event.entity),
       event.metadata.name,
@@ -41,7 +41,7 @@ export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
   }
 
   async beforeRemove(event: RemoveEvent<Pixel>) {
-    // await createAudit(
+    // return createAudit(
     //   event.connection,
     //   pickEntity<Pixel>(PixelSchema, event.entity),
     //   event.metadata.name,

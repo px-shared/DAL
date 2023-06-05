@@ -17,7 +17,7 @@ export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   }
 
   async beforeInsert(event: InsertEvent<Domain>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<Domain>(DomainSchema, event.entity),
       event.metadata.name,
@@ -29,7 +29,7 @@ export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   }
 
   async beforeUpdate(event: UpdateEvent<Domain>) {
-    await createAudit(
+    return createAudit(
       event.connection,
       pickEntity<ObjectLiteral>(DomainSchema, event.entity),
       event.metadata.name,
@@ -41,7 +41,7 @@ export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   }
 
   async beforeRemove(event: RemoveEvent<Domain>) {
-    // await createAudit(
+    // return createAudit(
     //   event.connection,
     //   pickEntity<Domain>(DomainSchema, event.entity),
     //   event.metadata.name,
