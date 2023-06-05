@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
 import Tag, { TagSchema } from '../models/Tag';
-import { pickEntity } from '../lib/util';
+import { pickEntitySchema } from '../lib/util';
 
 @EventSubscriber()
 export class TagSubscriber implements EntitySubscriberInterface<Tag> {
@@ -19,7 +19,7 @@ export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   async beforeInsert(event: InsertEvent<Tag>) {
     return createAudit(
       event.connection,
-      pickEntity<Tag>(TagSchema, event.entity),
+      pickEntitySchema<Tag>(TagSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -31,7 +31,7 @@ export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   async beforeUpdate(event: UpdateEvent<Tag>) {
     return createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(TagSchema, event.entity),
+      pickEntitySchema<ObjectLiteral>(TagSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -43,7 +43,7 @@ export class TagSubscriber implements EntitySubscriberInterface<Tag> {
   async beforeRemove(event: RemoveEvent<Tag>) {
     // return createAudit(
     //   event.connection,
-    //   pickEntity<Tag>(TagSchema, event.entity),
+    //   pickEntitySchema<Tag>(TagSchema, event.entity),
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,

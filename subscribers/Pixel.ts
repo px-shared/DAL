@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
 import Pixel, { PixelSchema } from '../models/Pixel';
-import { pickEntity } from '../lib/util';
+import { pickEntitySchema } from '../lib/util';
 
 @EventSubscriber()
 export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
@@ -19,7 +19,7 @@ export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
   async beforeInsert(event: InsertEvent<Pixel>) {
     return createAudit(
       event.connection,
-      pickEntity<Pixel>(PixelSchema, event.entity),
+      pickEntitySchema<Pixel>(PixelSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -31,7 +31,7 @@ export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
   async beforeUpdate(event: UpdateEvent<Pixel>) {
     return createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(PixelSchema, event.entity),
+      pickEntitySchema<ObjectLiteral>(PixelSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -43,7 +43,7 @@ export class PixelSubscriber implements EntitySubscriberInterface<Pixel> {
   async beforeRemove(event: RemoveEvent<Pixel>) {
     // return createAudit(
     //   event.connection,
-    //   pickEntity<Pixel>(PixelSchema, event.entity),
+    //   pickEntitySchema<Pixel>(PixelSchema, event.entity),
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,

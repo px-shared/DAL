@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
 import Segment, { SegmentSchema } from '../models/Segment';
-import { pickEntity } from '../lib/util';
+import { pickEntitySchema } from '../lib/util';
 
 @EventSubscriber()
 export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
@@ -19,7 +19,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   async beforeInsert(event: InsertEvent<Segment>) {
     return createAudit(
       event.connection,
-      pickEntity<Segment>(SegmentSchema, event.entity),
+      pickEntitySchema<Segment>(SegmentSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -31,7 +31,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   async beforeUpdate(event: UpdateEvent<Segment>) {
     return createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(SegmentSchema, event.entity),
+      pickEntitySchema<ObjectLiteral>(SegmentSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -43,7 +43,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
   async beforeRemove(event: RemoveEvent<Segment>) {
     // return createAudit(
     //   event.connection,
-    //   pickEntity<Segment>(SegmentSchema, event.entity),
+    //   pickEntitySchema<Segment>(SegmentSchema, event.entity),
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,

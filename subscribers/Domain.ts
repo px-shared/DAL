@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
 import Domain, { DomainSchema } from '../models/Domain';
-import { pickEntity } from '../lib/util';
+import { pickEntitySchema } from '../lib/util';
 
 @EventSubscriber()
 export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
@@ -19,7 +19,7 @@ export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   async beforeInsert(event: InsertEvent<Domain>) {
     return createAudit(
       event.connection,
-      pickEntity<Domain>(DomainSchema, event.entity),
+      pickEntitySchema<Domain>(DomainSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -31,7 +31,7 @@ export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   async beforeUpdate(event: UpdateEvent<Domain>) {
     return createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(DomainSchema, event.entity),
+      pickEntitySchema<ObjectLiteral>(DomainSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -43,7 +43,7 @@ export class DomainSubscriber implements EntitySubscriberInterface<Domain> {
   async beforeRemove(event: RemoveEvent<Domain>) {
     // return createAudit(
     //   event.connection,
-    //   pickEntity<Domain>(DomainSchema, event.entity),
+    //   pickEntitySchema<Domain>(DomainSchema, event.entity),
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,

@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
 import AccessToken, { AccessTokenSchema } from '../models/AccessToken';
-import { pickEntity } from '../lib/util';
+import { pickEntitySchema } from '../lib/util';
 
 @EventSubscriber()
 export class AccessTokenSubscriber
@@ -21,7 +21,7 @@ export class AccessTokenSubscriber
   async beforeInsert(event: InsertEvent<AccessToken>) {
     return createAudit(
       event.connection,
-      pickEntity<AccessToken>(AccessTokenSchema, event.entity),
+      pickEntitySchema<AccessToken>(AccessTokenSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -33,7 +33,7 @@ export class AccessTokenSubscriber
   async beforeUpdate(event: UpdateEvent<AccessToken>) {
     return createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(AccessTokenSchema, event.entity),
+      pickEntitySchema<ObjectLiteral>(AccessTokenSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -45,7 +45,7 @@ export class AccessTokenSubscriber
   async beforeRemove(event: RemoveEvent<AccessToken>) {
     // return createAudit(
     //   event.connection,
-    //   pickEntity<AccessToken>(AccessTokenSchema, event.entity),
+    //   pickEntitySchema<AccessToken>(AccessTokenSchema, event.entity),
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,

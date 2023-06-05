@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
 import Short, { ShortSchema } from '../models/Short';
-import { pickEntity } from '../lib/util';
+import { pickEntitySchema } from '../lib/util';
 
 @EventSubscriber()
 export class ShortSubscriber implements EntitySubscriberInterface<Short> {
@@ -19,7 +19,7 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
   async beforeInsert(event: InsertEvent<Short>) {
     return createAudit(
       event.connection,
-      pickEntity<Short>(ShortSchema, event.entity),
+      pickEntitySchema<Short>(ShortSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -31,7 +31,7 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
   async beforeUpdate(event: UpdateEvent<Short>) {
     return createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(ShortSchema, event.entity),
+      pickEntitySchema<ObjectLiteral>(ShortSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -43,7 +43,7 @@ export class ShortSubscriber implements EntitySubscriberInterface<Short> {
   async beforeRemove(event: RemoveEvent<Short>) {
     // return createAudit(
     //   event.connection,
-    //   pickEntity<Short>(ShortSchema, event.entity),
+    //   pickEntitySchema<Short>(ShortSchema, event.entity),
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,

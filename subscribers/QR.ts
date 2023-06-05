@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { createAudit } from '../lib/audit';
 import QR, { QRSchema } from '../models/QR';
-import { pickEntity } from '../lib/util';
+import { pickEntitySchema } from '../lib/util';
 
 @EventSubscriber()
 export class QRSubscriber implements EntitySubscriberInterface<QR> {
@@ -19,7 +19,7 @@ export class QRSubscriber implements EntitySubscriberInterface<QR> {
   async beforeInsert(event: InsertEvent<QR>) {
     return createAudit(
       event.connection,
-      pickEntity<QR>(QRSchema, event.entity),
+      pickEntitySchema<QR>(QRSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -31,7 +31,7 @@ export class QRSubscriber implements EntitySubscriberInterface<QR> {
   async beforeUpdate(event: UpdateEvent<QR>) {
     return createAudit(
       event.connection,
-      pickEntity<ObjectLiteral>(QRSchema, event.entity),
+      pickEntitySchema<ObjectLiteral>(QRSchema, event.entity),
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
@@ -43,7 +43,7 @@ export class QRSubscriber implements EntitySubscriberInterface<QR> {
   async beforeRemove(event: RemoveEvent<QR>) {
     // return createAudit(
     //   event.connection,
-    //   pickEntity<QR>(QRSchema, event.entity),
+    //   pickEntitySchema<QR>(QRSchema, event.entity),
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,
