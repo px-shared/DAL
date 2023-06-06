@@ -43,6 +43,12 @@ const connectionOptions = {
     cache: {
       duration: 15000
     },
+    extra: {
+      poolSize: 20,
+      connectionTimeoutMillis: 5000,
+      query_timeout: 2000,
+      statement_timeout: 2000
+    },
     entities: [
       AuditSchema,
       OrganisationSchema,
