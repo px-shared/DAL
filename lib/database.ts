@@ -46,8 +46,8 @@ const connectionOptions = {
     extra: {
       poolSize: 20,
       connectionTimeoutMillis: 5000,
-      query_timeout: 4000,
-      statement_timeout: 4000
+      query_timeout: 10000,
+      statement_timeout: 10000
     },
     entities: [
       AuditSchema,
