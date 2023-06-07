@@ -1,40 +1,32 @@
 import { EntitySchema } from 'typeorm';
 import Organisation from './Organisation';
 
-export default interface Usage {
+export default interface Summary {
   id: number;
 
   sessions: number;
   shorts: number;
   events: number;
   pixels: number;
+  tags: number;
   qrs: number;
   sites: number;
   domains: number;
-  members: number;
-  overage: number;
-  strikes: number;
   tokens: number;
   assets: number;
 
   organisation: Organisation;
 
-  resetAt: Date;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
 }
 
-export default class Usage {
-  constructor() {
-    this.resetAt = new Date();
-    this.resetAt.setDate(this.resetAt.getDate() + 30);
-  }
-}
+export default class Summary {}
 
-export const UsageSchema = new EntitySchema<Usage>({
-  name: 'Usage',
-  target: Usage,
+export const SummarySchema = new EntitySchema<Summary>({
+  name: 'Summary',
+  target: Summary,
   columns: {
     id: {
       type: 'int',
@@ -53,7 +45,7 @@ export const UsageSchema = new EntitySchema<Usage>({
       type: 'int',
       default: 0
     },
-    members: {
+    tags: {
       type: 'int',
       default: 0
     },
@@ -73,14 +65,6 @@ export const UsageSchema = new EntitySchema<Usage>({
       type: 'int',
       default: 0
     },
-    overage: {
-      type: 'int',
-      default: 0
-    },
-    strikes: {
-      type: 'int',
-      default: 0
-    },
     tokens: {
       type: 'int',
       default: 0
@@ -88,10 +72,6 @@ export const UsageSchema = new EntitySchema<Usage>({
     assets: {
       type: 'int',
       default: 0
-    },
-    resetAt: {
-      type: 'timestamp',
-      createDate: true
     },
     createdAt: {
       type: 'timestamp',
@@ -108,9 +88,9 @@ export const UsageSchema = new EntitySchema<Usage>({
   },
   relations: {
     organisation: {
-      type: 'one-to-one',
+      type: 'many-to-one',
       target: 'Organisation',
-      inverseSide: 'usage',
+      inverseSide: 'summaries',
       onDelete: 'SET NULL',
       joinColumn: true
     }

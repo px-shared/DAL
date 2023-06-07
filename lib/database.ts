@@ -29,6 +29,7 @@ import { DomainSubscriber } from '../subscribers/Domain';
 import { AccessTokenSubscriber } from '../subscribers/AccessToken';
 import { QRSubscriber } from '../subscribers/QR';
 import { SegmentSubscriber } from '../subscribers/Segment';
+import { SummarySchema } from '../models/Summary';
 
 const connectionOptions = {
   default: {
@@ -72,7 +73,8 @@ const connectionOptions = {
       EventSchema,
       IntegrationSchema,
       AssetSchema,
-      SegmentSchema
+      SegmentSchema,
+      SummarySchema
     ],
     subscribers: [
       ShortSubscriber,
