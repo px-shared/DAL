@@ -81,7 +81,7 @@ const connectionOptions = {
       TagSubscriber,
       PixelSubscriber,
       DomainSubscriber,
-      AccessTokenSubscriber,
+      // AccessTokenSubscriber,
       QRSubscriber,
       SegmentSubscriber
     ]
