@@ -16,6 +16,7 @@ import Usage from './Usage';
 import User from './User';
 import Audit from './Audit';
 import Summary from './Summary';
+import Session from './Session';
 
 export default interface Organisation {
   id: string;
@@ -36,6 +37,7 @@ export default interface Organisation {
   usage: Usage;
   subscription: Subscription;
 
+  sessions: Session[];
   tags: Tag[];
   audit: Audit[];
   segments: Segment[];
@@ -169,6 +171,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       target: 'Usage',
       cascade: true,
       inverseSide: 'organisation'
+    },
+    sessions: {
+      type: 'one-to-many',
+      target: 'Session',
+      inverseSide: 'organisation',
+      cascade: true
     },
     summaries: {
       type: 'one-to-many',
