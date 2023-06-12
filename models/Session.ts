@@ -43,7 +43,6 @@ export default interface Session {
   gdpr_consent_date: Date;
 
   short: Short;
-  organisation: Organisation;
   events: Event[];
 
   createdAt: Date;
@@ -241,10 +240,6 @@ export const SessionSchema = new EntitySchema<Session>({
       columns: ['short']
     },
     {
-      name: 'IDX_organisation',
-      columns: ['organisation']
-    },
-    {
       name: 'IDX_deviceType',
       columns: ['deviceType']
     },
@@ -285,12 +280,6 @@ export const SessionSchema = new EntitySchema<Session>({
     short: {
       type: 'many-to-one',
       target: 'Short',
-      inverseSide: 'sessions',
-      onDelete: 'CASCADE'
-    },
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
       inverseSide: 'sessions',
       onDelete: 'CASCADE'
     },

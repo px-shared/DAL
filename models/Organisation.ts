@@ -17,6 +17,7 @@ import User from './User';
 import Audit from './Audit';
 import Summary from './Summary';
 import Session from './Session';
+import Workspace from './Workspace';
 
 export default interface Organisation {
   id: string;
@@ -37,11 +38,11 @@ export default interface Organisation {
   usage: Usage;
   subscription: Subscription;
 
-  sessions: Session[];
   tags: Tag[];
   audit: Audit[];
   segments: Segment[];
   users: User[];
+  workspaces: Workspace[];
   shorts: Short[];
   assets: Asset[];
   pixels: Pixel[];
@@ -136,6 +137,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       cascade: true,
       inverseSide: 'organisation'
     },
+    workspaces: {
+      type: 'one-to-many',
+      target: 'Workspace',
+      cascade: true,
+      inverseSide: 'organisation'
+    },
     settings: {
       type: 'one-to-one',
       target: 'Settings',
@@ -171,12 +178,6 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       target: 'Usage',
       cascade: true,
       inverseSide: 'organisation'
-    },
-    sessions: {
-      type: 'one-to-many',
-      target: 'Session',
-      inverseSide: 'organisation',
-      cascade: true
     },
     summaries: {
       type: 'one-to-many',

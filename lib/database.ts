@@ -30,6 +30,7 @@ import { AccessTokenSubscriber } from '../subscribers/AccessToken';
 import { QRSubscriber } from '../subscribers/QR';
 import { SegmentSubscriber } from '../subscribers/Segment';
 import { SummarySchema } from '../models/Summary';
+import { WorkspaceSchema } from '../models/Workspace';
 
 const connectionOptions = {
   default: {
@@ -74,7 +75,8 @@ const connectionOptions = {
       IntegrationSchema,
       AssetSchema,
       SegmentSchema,
-      SummarySchema
+      SummarySchema,
+      WorkspaceSchema
     ],
     subscribers: [
       ShortSubscriber,

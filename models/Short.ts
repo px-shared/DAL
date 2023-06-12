@@ -9,6 +9,7 @@ import QR from './QR';
 import Site from './Site';
 import Event from './Event';
 import Segment from './Segment';
+import Workspace from './Workspace';
 
 export default interface Short {
   id: string;
@@ -32,6 +33,7 @@ export default interface Short {
 
   domain: Domain;
   user: User;
+  workspace: Workspace;
   organisation: Organisation;
   sessions: Session[];
   tags: Tag[];
@@ -179,7 +181,13 @@ export const ShortSchema = new EntitySchema<Short>({
     user: {
       type: 'many-to-one',
       target: 'User',
-      inverseSide: 'pixels',
+      inverseSide: 'shorts',
+      onDelete: 'SET NULL'
+    },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'shorts',
       onDelete: 'SET NULL'
     },
     sessions: {
