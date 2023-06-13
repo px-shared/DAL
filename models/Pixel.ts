@@ -12,7 +12,7 @@ export default interface Pixel {
   reference: string;
 
   user: User;
-  defaults: Defaults;
+  defaults: Defaults[];
   organisation: Organisation;
   shorts: Short[];
 
@@ -74,10 +74,9 @@ export const PixelSchema = new EntitySchema<Pixel>({
       onDelete: 'SET NULL'
     },
     defaults: {
-      type: 'one-to-one',
+      type: 'one-to-many',
       target: 'Defaults',
-      inverseSide: 'pixel',
-      onDelete: 'SET NULL'
+      inverseSide: 'pixel'
     },
     shorts: {
       type: 'many-to-many',

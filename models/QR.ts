@@ -13,7 +13,7 @@ export default interface QR {
   format: any;
 
   user: User;
-  defaults: Defaults;
+  defaults: Defaults[];
   organisation: Organisation;
   shorts: Short[];
 
@@ -79,10 +79,9 @@ export const QRSchema = new EntitySchema<QR>({
       onDelete: 'SET NULL'
     },
     defaults: {
-      type: 'one-to-one',
+      type: 'one-to-many',
       target: 'Defaults',
-      inverseSide: 'qr',
-      onDelete: 'SET NULL'
+      inverseSide: 'qr'
     },
     shorts: {
       type: 'one-to-many',

@@ -46,34 +46,30 @@ export const DefaultsSchema = new EntitySchema<Defaults>({
   },
   relations: {
     domain: {
-      type: 'one-to-one',
+      type: 'many-to-one',
       target: 'Domain',
       inverseSide: 'defaults',
-      joinColumn: true,
       eager: true,
       onDelete: 'SET NULL'
     },
     pixel: {
-      type: 'one-to-one',
+      type: 'many-to-one',
       target: 'Pixel',
       inverseSide: 'defaults',
-      joinColumn: true,
       eager: true,
       onDelete: 'SET NULL'
     },
     qr: {
-      type: 'one-to-one',
+      type: 'many-to-one',
       target: 'QR',
       inverseSide: 'defaults',
-      joinColumn: true,
       eager: true,
       onDelete: 'SET NULL'
     },
     tag: {
-      type: 'one-to-one',
+      type: 'many-to-one',
       target: 'Tag',
       inverseSide: 'defaults',
-      joinColumn: true,
       eager: true,
       onDelete: 'SET NULL'
     },

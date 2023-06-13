@@ -9,7 +9,7 @@ export default interface Domain {
   verified: boolean;
 
   user: User;
-  defaults: Defaults;
+  defaults: Defaults[];
   organisation: Organisation;
   shorts: Short[];
 
@@ -66,10 +66,9 @@ export const DomainSchema = new EntitySchema<Domain>({
       onDelete: 'SET NULL'
     },
     defaults: {
-      type: 'one-to-one',
+      type: 'one-to-many',
       target: 'Defaults',
-      inverseSide: 'domain',
-      onDelete: 'SET NULL'
+      inverseSide: 'domain'
     },
     shorts: {
       type: 'one-to-many',

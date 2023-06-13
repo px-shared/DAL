@@ -10,7 +10,7 @@ export default interface Tag {
   name: string;
 
   user: User;
-  defaults: Defaults;
+  defaults: Defaults[];
   organisation: Organisation;
   shorts: Short[];
 
@@ -65,10 +65,9 @@ export const TagSchema = new EntitySchema<Tag>({
       onDelete: 'SET NULL'
     },
     defaults: {
-      type: 'one-to-one',
+      type: 'one-to-many',
       target: 'Defaults',
-      inverseSide: 'tag',
-      onDelete: 'SET NULL'
+      inverseSide: 'tag'
     },
     shorts: {
       type: 'many-to-many',
