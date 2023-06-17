@@ -1,7 +1,6 @@
 import { EntitySchema, getConnectionManager } from 'typeorm';
 import { OrganisationSchema } from '../models/Organisation';
 import { DomainSchema } from '../models/Domain';
-import { SessionSchema } from '../models/Session';
 import { ShortSchema } from '../models/Short';
 import { TagSchema } from '../models/Tag';
 import { PixelSchema } from '../models/Pixel';
@@ -17,7 +16,6 @@ import { DefaultsSchema } from '../models/Defaults';
 import { AccessTokenSchema } from '../models/AccessToken';
 import { QRSchema } from '../models/QR';
 import { SiteSchema } from '../models/Site';
-import { EventSchema } from '../models/Event';
 import { IntegrationSchema } from '../models/Integration';
 import { AssetSchema } from '../models/Asset';
 import { SegmentSchema } from '../models/Segment';
@@ -29,7 +27,6 @@ import { DomainSubscriber } from '../subscribers/Domain';
 import { AccessTokenSubscriber } from '../subscribers/AccessToken';
 import { QRSubscriber } from '../subscribers/QR';
 import { SegmentSubscriber } from '../subscribers/Segment';
-import { SummarySchema } from '../models/Summary';
 import { WorkspaceSchema } from '../models/Workspace';
 
 const connectionOptions = {
@@ -55,7 +52,6 @@ const connectionOptions = {
       AuditSchema,
       OrganisationSchema,
       DomainSchema,
-      SessionSchema,
       ShortSchema,
       TagSchema,
       PixelSchema,
@@ -71,11 +67,9 @@ const connectionOptions = {
       AccessTokenSchema,
       QRSchema,
       SiteSchema,
-      EventSchema,
       IntegrationSchema,
       AssetSchema,
       SegmentSchema,
-      SummarySchema,
       WorkspaceSchema
     ],
     subscribers: [

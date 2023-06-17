@@ -2,12 +2,10 @@ import { EntitySchema } from 'typeorm';
 import Domain from './Domain';
 import Organisation from './Organisation';
 import Pixel from './Pixel';
-import Session from './Session';
 import User from './User';
 import Tag from './Tag';
 import QR from './QR';
 import Site from './Site';
-import Event from './Event';
 import Segment from './Segment';
 import Workspace from './Workspace';
 
@@ -35,7 +33,6 @@ export default interface Short {
   user: User;
   workspace: Workspace;
   organisation: Organisation;
-  sessions: Session[];
   tags: Tag[];
   segments: Segment[];
   pixels: Pixel[];
@@ -189,12 +186,6 @@ export const ShortSchema = new EntitySchema<Short>({
       target: 'Workspace',
       inverseSide: 'shorts',
       onDelete: 'SET NULL'
-    },
-    sessions: {
-      type: 'one-to-many',
-      target: 'Session',
-      inverseSide: 'short',
-      cascade: true
     },
     tags: {
       type: 'many-to-many',
