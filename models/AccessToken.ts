@@ -41,7 +41,7 @@ export const AccessTokenSchema = new EntitySchema<AccessToken>({
       select: false
     },
     permissions: {
-      type: 'simple-array',
+      type: 'simple-json',
       nullable: true
     },
     expires: {
