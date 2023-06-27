@@ -30,6 +30,7 @@ export default interface Organisation {
   terms: string;
   logo: string;
   developer: boolean;
+  attribution: string;
 
   settings: Settings;
   usage: Usage;
@@ -104,6 +105,10 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       nullable: true
     },
     logo: {
+      type: 'varchar',
+      nullable: true
+    },
+    attribution: {
       type: 'varchar',
       nullable: true
     },
