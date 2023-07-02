@@ -5,6 +5,7 @@ export default interface Preferences {
   id: number;
 
   compactUserInterface: boolean;
+  darkMode: boolean;
   updates: boolean;
   alerts: boolean;
   report: boolean;
@@ -28,6 +29,10 @@ export const PreferencesSchema = new EntitySchema<Preferences>({
       generated: true
     },
     compactUserInterface: {
+      type: 'boolean',
+      default: false
+    },
+    darkMode: {
       type: 'boolean',
       default: false
     },
