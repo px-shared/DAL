@@ -10,6 +10,7 @@ export default interface Subscription {
   status: string;
   promotionCode: string;
   invoice: any;
+  checkout: string;
 
   plan: Plan;
   organisation: Organisation;
@@ -60,6 +61,10 @@ export const SubscriptionSchema = new EntitySchema<Subscription>({
       nullable: true
     },
     promotionCode: {
+      type: 'varchar',
+      nullable: true
+    },
+    checkout: {
       type: 'varchar',
       nullable: true
     },
