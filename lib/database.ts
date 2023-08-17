@@ -24,7 +24,7 @@ import { ShortSubscriber } from '../subscribers/Short';
 import { TagSubscriber } from '../subscribers/Tag';
 import { PixelSubscriber } from '../subscribers/Pixel';
 import { DomainSubscriber } from '../subscribers/Domain';
-import { AccessTokenSubscriber } from '../subscribers/AccessToken';
+
 import { QRSubscriber } from '../subscribers/QR';
 import { SegmentSubscriber } from '../subscribers/Segment';
 import { WorkspaceSchema } from '../models/Workspace';
