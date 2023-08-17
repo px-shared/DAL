@@ -25,6 +25,8 @@ export default interface User {
   verified: Date;
   ipAddress: string;
   role: 'owner' | 'administrator' | 'user';
+  result: string;
+  flags: string[];
 
   feedback: Feedback[];
   verifications: Verification[];
@@ -91,6 +93,14 @@ export const UserSchema = new EntitySchema<User>({
     },
     ipAddress: {
       type: 'varchar',
+      nullable: true
+    },
+    result: {
+      type: 'varchar',
+      nullable: true
+    },
+    flags: {
+      type: 'simple-array',
       nullable: true
     },
     verified: {
