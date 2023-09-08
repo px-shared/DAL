@@ -5,7 +5,7 @@ import Short from './Short';
 import User from './User';
 
 export default interface Segment {
-  id: string;
+  id: number;
 
   name: string;
   ruleset: any;
