@@ -15,6 +15,7 @@ export default interface Short {
   route: string;
   api: boolean;
   active: boolean;
+  transitive: boolean;
   consent: boolean;
   favourite: boolean;
   destination: string;
@@ -72,6 +73,10 @@ export const ShortSchema = new EntitySchema<Short>({
     active: {
       type: 'boolean',
       default: true
+    },
+    transitive: {
+      type: 'boolean',
+      default: false
     },
     consent: {
       type: 'boolean',
