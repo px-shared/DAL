@@ -27,6 +27,7 @@ export default interface Short {
   favicon: string;
   meta: any;
   parameters: any;
+  conditions: any;
   events: number;
   clicks: number;
 
@@ -118,6 +119,10 @@ export const ShortSchema = new EntitySchema<Short>({
       nullable: true
     },
     parameters: {
+      type: 'simple-json',
+      nullable: true
+    },
+    conditions: {
       type: 'simple-json',
       nullable: true
     },
