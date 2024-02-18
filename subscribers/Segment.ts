@@ -23,7 +23,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
-      event.entity?.organisation,
+      event.entity?.workspace,
       'INSERT'
     );
   }
@@ -35,7 +35,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
       event.metadata.name,
       event.entity?.id,
       event.entity?.user,
-      event.entity?.organisation,
+      event.entity?.workspace,
       'UPDATE'
     );
   }
@@ -47,7 +47,7 @@ export class SegmentSubscriber implements EntitySubscriberInterface<Segment> {
     //   event.metadata.name,
     //   event.entity?.id,
     //   event.queryRunner?.data?.user,
-    //   event.queryRunner?.data?.organisation,
+    //   event.queryRunner?.data?.workspace,
     //   'REMOVE'
     // );
   }
