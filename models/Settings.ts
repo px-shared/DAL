@@ -50,6 +50,13 @@ export const SettingsSchema = new EntitySchema<Settings>({
       inverseSide: 'settings',
       joinColumn: true,
       onDelete: 'CASCADE'
+    },
+    workspace: {
+      type: 'one-to-one',
+      target: 'Workspace',
+      inverseSide: 'settings',
+      joinColumn: true,
+      onDelete: 'CASCADE'
     }
   }
 });

@@ -62,6 +62,12 @@ export const AssetSchema = new EntitySchema<Asset>({
       inverseSide: 'assets',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'assets',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

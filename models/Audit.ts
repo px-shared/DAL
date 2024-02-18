@@ -82,6 +82,12 @@ export const AuditSchema = new EntitySchema<Audit>({
       inverseSide: 'audit',
       onDelete: 'SET NULL'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'audit',
+      onDelete: 'SET NULL'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

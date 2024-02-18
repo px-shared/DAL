@@ -68,6 +68,12 @@ export const SiteSchema = new EntitySchema<Site>({
       inverseSide: 'sites',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'sites',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

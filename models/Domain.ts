@@ -61,6 +61,12 @@ export const DomainSchema = new EntitySchema<Domain>({
       inverseSide: 'domains',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'domains',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

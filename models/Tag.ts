@@ -60,6 +60,12 @@ export const TagSchema = new EntitySchema<Tag>({
       inverseSide: 'tags',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'tags',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

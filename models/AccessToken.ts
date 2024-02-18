@@ -76,6 +76,12 @@ export const AccessTokenSchema = new EntitySchema<AccessToken>({
       inverseSide: 'accessTokens',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'accessTokens',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

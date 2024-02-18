@@ -74,6 +74,12 @@ export const QRSchema = new EntitySchema<QR>({
       inverseSide: 'qrs',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'qrs',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

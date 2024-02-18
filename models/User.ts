@@ -137,6 +137,12 @@ export const UserSchema = new EntitySchema<User>({
       inverseSide: 'user',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'user',
+      onDelete: 'CASCADE'
+    },
     preferences: {
       type: 'one-to-one',
       target: 'Preferences',

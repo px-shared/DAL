@@ -69,6 +69,12 @@ export const PixelSchema = new EntitySchema<Pixel>({
       inverseSide: 'pixels',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'pixels',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

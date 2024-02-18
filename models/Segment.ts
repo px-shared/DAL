@@ -64,6 +64,12 @@ export const SegmentSchema = new EntitySchema<Segment>({
       inverseSide: 'segments',
       onDelete: 'CASCADE'
     },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'segments',
+      onDelete: 'CASCADE'
+    },
     user: {
       type: 'many-to-one',
       target: 'User',

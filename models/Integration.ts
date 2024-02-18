@@ -89,6 +89,12 @@ export const IntegrationSchema = new EntitySchema<Integration>({
       target: 'Organisation',
       inverseSide: 'integrations',
       onDelete: 'CASCADE'
+    },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'integrations',
+      onDelete: 'CASCADE'
     }
   }
 });
