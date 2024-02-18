@@ -149,16 +149,6 @@ export const ShortSchema = new EntitySchema<Short>({
       select: true
     }
   },
-  indices: [
-    {
-      name: 'IDX_user',
-      columns: ['user', 'organisation']
-    },
-    {
-      name: 'IDX_organisation',
-      columns: ['organisation']
-    }
-  ],
   relations: {
     domain: {
       type: 'many-to-one',
