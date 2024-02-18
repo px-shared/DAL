@@ -76,10 +76,11 @@ export const WorkspaceSchema = new EntitySchema<Workspace>({
       onDelete: 'CASCADE'
     },
     users: {
-      type: 'one-to-many',
+      type: 'many-to-many',
       target: 'User',
+      inverseSide: 'workspaces',
       cascade: true,
-      inverseSide: 'organisation'
+      joinTable: true
     },
     settings: {
       type: 'one-to-one',

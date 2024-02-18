@@ -41,11 +41,11 @@ export default interface User {
   qrs: QR[];
   sites: Site[];
   accessTokens: AccessToken[];
+  workspaces: Workspace[];
 
   defaults: Defaults;
   preferences: Preferences;
   organisation: Organisation;
-  workspace: Workspace;
 
   invalidatedAt: Date;
   createdAt: Date;
@@ -137,10 +137,10 @@ export const UserSchema = new EntitySchema<User>({
       inverseSide: 'user',
       onDelete: 'CASCADE'
     },
-    workspace: {
-      type: 'many-to-one',
+    workspaces: {
+      type: 'many-to-many',
       target: 'Workspace',
-      inverseSide: 'user',
+      inverseSide: 'users',
       onDelete: 'CASCADE'
     },
     preferences: {
