@@ -1,6 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import Organisation from './Organisation';
-
+import Workspace from './Workspace';
 
 export default interface Integration {
   id: number;
@@ -17,6 +17,7 @@ export default interface Integration {
   accessedAt: Date;
 
   organisation: Organisation;
+  workspace: Workspace;
 
   createdAt: Date;
   updatedAt: Date;

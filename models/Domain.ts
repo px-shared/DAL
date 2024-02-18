@@ -1,5 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import Organisation from './Organisation';
+import Workspace from './Workspace';
 import User from './User';
 import Short from './Short';
 import Defaults from './Defaults';
@@ -11,6 +12,7 @@ export default interface Domain {
   user: User;
   defaults: Defaults[];
   organisation: Organisation;
+  workspace: Workspace;
   shorts: Short[];
 
   createdAt: Date;

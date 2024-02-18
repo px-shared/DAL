@@ -1,6 +1,7 @@
 import { EntitySchema } from 'typeorm';
 import Defaults from './Defaults';
 import Organisation from './Organisation';
+import Workspace from './Workspace';
 import Short from './Short';
 import User from './User';
 
@@ -15,6 +16,7 @@ export default interface QR {
   user: User;
   defaults: Defaults[];
   organisation: Organisation;
+  workspace: Workspace;
   shorts: Short[];
 
   createdAt: Date;

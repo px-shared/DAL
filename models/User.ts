@@ -2,6 +2,7 @@ import { EntitySchema } from 'typeorm';
 import Preferences from './Preferences';
 import Feedback from './Feedback';
 import Organisation from './Organisation';
+import Workspace from './Workspace';
 import bcrypt from 'bcrypt';
 import Verification from './Verification';
 import Tag from './Tag';
@@ -44,6 +45,7 @@ export default interface User {
   defaults: Defaults;
   preferences: Preferences;
   organisation: Organisation;
+  workspace: Workspace;
 
   invalidatedAt: Date;
   createdAt: Date;

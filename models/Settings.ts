@@ -1,5 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import Organisation from './Organisation';
+import Workspace from './Workspace';
 
 export default interface Settings {
   id: number;
@@ -7,6 +8,7 @@ export default interface Settings {
   safeguard: boolean;
 
   organisation: Organisation;
+  workspace: Workspace;
 
   createdAt: Date;
   updatedAt: Date;

@@ -1,6 +1,7 @@
 import { EntitySchema } from 'typeorm';
 import Domain from './Domain';
 import Organisation from './Organisation';
+import Workspace from './Workspace';
 import Pixel from './Pixel';
 import User from './User';
 import Tag from './Tag';
@@ -35,6 +36,7 @@ export default interface Short {
   user: User;
   workspace: Workspace;
   organisation: Organisation;
+  workspace: Workspace;
   tags: Tag[];
   segments: Segment[];
   pixels: Pixel[];

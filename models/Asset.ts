@@ -1,6 +1,7 @@
 import { EntitySchema } from 'typeorm';
 
 import Organisation from './Organisation';
+import Workspace from './Workspace';
 
 import User from './User';
 
@@ -12,6 +13,7 @@ export default interface Asset {
 
   user: User;
   organisation: Organisation;
+  workspace: Workspace;
 
   createdAt: Date;
   updatedAt: Date;

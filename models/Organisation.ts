@@ -32,9 +32,10 @@ export default interface Organisation {
   developer: boolean;
   attribution: string;
 
-  settings: Settings;
   usage: Usage;
   subscription: Subscription;
+
+  settings: Settings;
 
   tags: Tag[];
   audit: Audit[];
