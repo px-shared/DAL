@@ -8,7 +8,6 @@ import Tag from './Tag';
 import QR from './QR';
 import Site from './Site';
 import Segment from './Segment';
-import Workspace from './Workspace';
 
 export default interface Short {
   id: string;
@@ -36,7 +35,6 @@ export default interface Short {
   user: User;
   workspace: Workspace;
   organisation: Organisation;
-  workspace: Workspace;
   tags: Tag[];
   segments: Segment[];
   pixels: Pixel[];
