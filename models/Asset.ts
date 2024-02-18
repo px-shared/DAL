@@ -12,7 +12,6 @@ export default interface Asset {
   reference: string;
 
   user: User;
-  organisation: Organisation;
   workspace: Workspace;
 
   createdAt: Date;
@@ -56,12 +55,6 @@ export const AssetSchema = new EntitySchema<Asset>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'assets',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

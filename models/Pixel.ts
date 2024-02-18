@@ -14,7 +14,6 @@ export default interface Pixel {
 
   user: User;
   defaults: Defaults[];
-  organisation: Organisation;
   workspace: Workspace;
   shorts: Short[];
 
@@ -63,12 +62,6 @@ export const PixelSchema = new EntitySchema<Pixel>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'pixels',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

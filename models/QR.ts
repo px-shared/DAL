@@ -15,7 +15,6 @@ export default interface QR {
 
   user: User;
   defaults: Defaults[];
-  organisation: Organisation;
   workspace: Workspace;
   shorts: Short[];
 
@@ -68,12 +67,6 @@ export const QRSchema = new EntitySchema<QR>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'qrs',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

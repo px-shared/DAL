@@ -11,7 +11,6 @@ export default interface Domain {
 
   user: User;
   defaults: Defaults[];
-  organisation: Organisation;
   workspace: Workspace;
   shorts: Short[];
 
@@ -55,12 +54,6 @@ export const DomainSchema = new EntitySchema<Domain>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'domains',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

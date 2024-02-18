@@ -16,7 +16,6 @@ export default interface Integration {
   expires: Date;
   accessedAt: Date;
 
-  organisation: Organisation;
   workspace: Workspace;
 
   createdAt: Date;
@@ -84,12 +83,6 @@ export const IntegrationSchema = new EntitySchema<Integration>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'integrations',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

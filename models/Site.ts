@@ -13,7 +13,6 @@ export default interface Site {
   data: any;
 
   user: User;
-  organisation: Organisation;
   workspace: Workspace;
   shorts: Short[];
 
@@ -62,12 +61,6 @@ export const SiteSchema = new EntitySchema<Site>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'sites',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

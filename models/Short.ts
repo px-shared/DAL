@@ -34,7 +34,6 @@ export default interface Short {
   domain: Domain;
   user: User;
   workspace: Workspace;
-  organisation: Organisation;
   tags: Tag[];
   segments: Segment[];
   pixels: Pixel[];
@@ -178,12 +177,6 @@ export const ShortSchema = new EntitySchema<Short>({
       target: 'Site',
       inverseSide: 'shorts',
       onDelete: 'SET NULL'
-    },
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'shorts',
-      onDelete: 'CASCADE'
     },
     user: {
       type: 'many-to-one',

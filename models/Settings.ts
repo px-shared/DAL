@@ -7,7 +7,6 @@ export default interface Settings {
 
   safeguard: boolean;
 
-  organisation: Organisation;
   workspace: Workspace;
 
   createdAt: Date;
@@ -44,13 +43,6 @@ export const SettingsSchema = new EntitySchema<Settings>({
     }
   },
   relations: {
-    organisation: {
-      type: 'one-to-one',
-      target: 'Organisation',
-      inverseSide: 'settings',
-      joinColumn: true,
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'one-to-one',
       target: 'Workspace',

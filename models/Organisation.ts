@@ -35,21 +35,8 @@ export default interface Organisation {
   usage: Usage;
   subscription: Subscription;
 
-  settings: Settings;
-
-  tags: Tag[];
-  audit: Audit[];
-  segments: Segment[];
   users: User[];
   workspaces: Workspace[];
-  shorts: Short[];
-  assets: Asset[];
-  pixels: Pixel[];
-  domains: Domain[];
-  qrs: QR[];
-  sites: Site[];
-  accessTokens: AccessToken[];
-  integrations: Integration[];
 
   createdAt: Date;
   updatedAt: Date;
@@ -146,36 +133,6 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       cascade: true,
       inverseSide: 'organisation'
     },
-    settings: {
-      type: 'one-to-one',
-      target: 'Settings',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    domains: {
-      type: 'one-to-many',
-      target: 'Domain',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    accessTokens: {
-      type: 'one-to-many',
-      target: 'AccessToken',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    integrations: {
-      type: 'one-to-many',
-      target: 'Integration',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    shorts: {
-      type: 'one-to-many',
-      target: 'Short',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
     usage: {
       type: 'one-to-one',
       target: 'Usage',
@@ -185,48 +142,6 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     subscription: {
       type: 'one-to-one',
       target: 'Subscription',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    tags: {
-      type: 'one-to-many',
-      target: 'Tag',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    segments: {
-      type: 'one-to-many',
-      target: 'Segment',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    pixels: {
-      type: 'one-to-many',
-      target: 'Pixel',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    assets: {
-      type: 'one-to-many',
-      target: 'Asset',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    qrs: {
-      type: 'one-to-many',
-      target: 'QR',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    sites: {
-      type: 'one-to-many',
-      target: 'Site',
-      cascade: true,
-      inverseSide: 'organisation'
-    },
-    audit: {
-      type: 'one-to-many',
-      target: 'Audit',
       cascade: true,
       inverseSide: 'organisation'
     }

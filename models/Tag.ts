@@ -12,7 +12,6 @@ export default interface Tag {
 
   user: User;
   defaults: Defaults[];
-  organisation: Organisation;
   workspace: Workspace;
   shorts: Short[];
 
@@ -54,12 +53,6 @@ export const TagSchema = new EntitySchema<Tag>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'tags',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

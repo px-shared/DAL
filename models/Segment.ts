@@ -12,7 +12,6 @@ export default interface Segment {
   ruleset: any;
 
   user: User;
-  organisation: Organisation;
   workspace: Workspace;
   shorts: Short[];
 
@@ -58,12 +57,6 @@ export const SegmentSchema = new EntitySchema<Segment>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'segments',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

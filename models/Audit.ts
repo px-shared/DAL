@@ -13,7 +13,6 @@ export default interface Audit {
   performedAt: Date;
 
   user: User;
-  organisation: Organisation;
   workspace: Workspace;
 
   createdAt: Date;
@@ -28,13 +27,13 @@ export default class Audit {
     entityId: number | string,
     payload: object,
     user: User,
-    organisation: Organisation
+    workspace: Workspace
   ) {
     this.action = action;
     this.entity = entity;
     this.entityId = entityId;
     this.user = user;
-    this.organisation = organisation;
+    this.workspace = workspace;
     this.payload = payload;
   }
 }
@@ -76,12 +75,6 @@ export const AuditSchema = new EntitySchema<Audit>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'audit',
-      onDelete: 'SET NULL'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',

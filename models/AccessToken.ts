@@ -13,7 +13,6 @@ export default interface AccessToken {
   accessedAt: Date;
 
   user: User;
-  organisation: Organisation;
   workspace: Workspace;
 
   createdAt: Date;
@@ -70,12 +69,6 @@ export const AccessTokenSchema = new EntitySchema<AccessToken>({
     }
   },
   relations: {
-    organisation: {
-      type: 'many-to-one',
-      target: 'Organisation',
-      inverseSide: 'accessTokens',
-      onDelete: 'CASCADE'
-    },
     workspace: {
       type: 'many-to-one',
       target: 'Workspace',
