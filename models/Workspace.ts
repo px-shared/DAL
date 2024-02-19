@@ -86,73 +86,73 @@ export const WorkspaceSchema = new EntitySchema<Workspace>({
       type: 'one-to-one',
       target: 'Settings',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     domains: {
       type: 'one-to-many',
       target: 'Domain',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     accessTokens: {
       type: 'one-to-many',
       target: 'AccessToken',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     integrations: {
       type: 'one-to-many',
       target: 'Integration',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     shorts: {
       type: 'one-to-many',
       target: 'Short',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     tags: {
       type: 'one-to-many',
       target: 'Tag',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     segments: {
       type: 'one-to-many',
       target: 'Segment',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     pixels: {
       type: 'one-to-many',
       target: 'Pixel',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     assets: {
       type: 'one-to-many',
       target: 'Asset',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     qrs: {
       type: 'one-to-many',
       target: 'QR',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     sites: {
       type: 'one-to-many',
       target: 'Site',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     },
     audit: {
       type: 'one-to-many',
       target: 'Audit',
       cascade: true,
-      inverseSide: 'organisation'
+      inverseSide: 'workspace'
     }
   }
 });
