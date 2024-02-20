@@ -43,7 +43,7 @@ export default interface User {
   accessTokens: AccessToken[];
   workspaces: Workspace[];
 
-  defaults: Defaults;
+  defaults: Defaults[];
   preferences: Preferences;
   organisation: Organisation;
 
@@ -149,15 +149,15 @@ export const UserSchema = new EntitySchema<User>({
       cascade: true,
       inverseSide: 'user'
     },
-    defaults: {
-      type: 'one-to-one',
-      target: 'Defaults',
-      cascade: true,
-      inverseSide: 'user'
-    },
     feedback: {
       type: 'one-to-many',
       target: 'Feedback',
+      cascade: true,
+      inverseSide: 'user'
+    },
+    defaults: {
+      type: 'one-to-many',
+      target: 'Defaults',
       cascade: true,
       inverseSide: 'user'
     },

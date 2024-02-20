@@ -13,6 +13,7 @@ import Settings from './Settings';
 import Site from './Site';
 import Tag from './Tag';
 import User from './User';
+import Defaults from './Defaults';
 
 export default interface Workspace {
   id: number;
@@ -22,6 +23,7 @@ export default interface Workspace {
   settings: Settings;
   organisation: Organisation;
 
+  defaults: Defaults[];
   tags: Tag[];
   audit: Audit[];
   segments: Segment[];
@@ -91,6 +93,12 @@ export const WorkspaceSchema = new EntitySchema<Workspace>({
     domains: {
       type: 'one-to-many',
       target: 'Domain',
+      cascade: true,
+      inverseSide: 'workspace'
+    },
+    defaults: {
+      type: 'one-to-many',
+      target: 'Defaults',
       cascade: true,
       inverseSide: 'workspace'
     },

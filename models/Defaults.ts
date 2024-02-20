@@ -4,6 +4,7 @@ import Pixel from './Pixel';
 import QR from './QR';
 import Tag from './Tag';
 import User from './User';
+import Workspace from './Workspace';
 
 export default interface Defaults {
   id: number;
@@ -13,6 +14,7 @@ export default interface Defaults {
   tag: Tag;
   qr: QR;
 
+  workspace: Workspace;
   user: User;
 
   createdAt: Date;
@@ -74,10 +76,15 @@ export const DefaultsSchema = new EntitySchema<Defaults>({
       onDelete: 'SET NULL'
     },
     user: {
-      type: 'one-to-one',
+      type: 'many-to-one',
       target: 'User',
       inverseSide: 'defaults',
-      joinColumn: true,
+      onDelete: 'CASCADE'
+    },
+    workspace: {
+      type: 'many-to-one',
+      target: 'Workspace',
+      inverseSide: 'defaults',
       onDelete: 'CASCADE'
     }
   }

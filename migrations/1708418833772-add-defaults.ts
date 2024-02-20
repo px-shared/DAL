@@ -1,7 +1,7 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class addWorkspaceUsage1708358110693 implements MigrationInterface {
-    name = 'addWorkspaceUsage1708358110693'
+export class addDefaults1708418833772 implements MigrationInterface {
+    name = 'addDefaults1708418833772'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`ALTER TABLE "access_token" DROP CONSTRAINT "FK_7a5564a633c54618d0d0330676b"`);
@@ -31,11 +31,21 @@ export class addWorkspaceUsage1708358110693 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "short" DROP COLUMN "organisationId"`);
         await queryRunner.query(`ALTER TABLE "site" DROP COLUMN "organisationId"`);
         await queryRunner.query(`ALTER TABLE "tag" DROP COLUMN "organisationId"`);
+        await queryRunner.query(`ALTER TABLE "defaults" ADD "workspaceId" integer`);
         await queryRunner.query(`ALTER TABLE "usage" ADD "workspaces" integer NOT NULL DEFAULT '0'`);
+        await queryRunner.query(`ALTER TABLE "defaults" DROP CONSTRAINT "FK_759f1574b1612768ecbcd6a3e79"`);
+        await queryRunner.query(`ALTER TABLE "defaults" DROP CONSTRAINT "REL_759f1574b1612768ecbcd6a3e7"`);
+        await queryRunner.query(`ALTER TABLE "defaults" ADD CONSTRAINT "FK_759f1574b1612768ecbcd6a3e79" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE "defaults" ADD CONSTRAINT "FK_644071e6a0b02ea9e96aa3bf09f" FOREIGN KEY ("workspaceId") REFERENCES "workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`ALTER TABLE "defaults" DROP CONSTRAINT "FK_644071e6a0b02ea9e96aa3bf09f"`);
+        await queryRunner.query(`ALTER TABLE "defaults" DROP CONSTRAINT "FK_759f1574b1612768ecbcd6a3e79"`);
+        await queryRunner.query(`ALTER TABLE "defaults" ADD CONSTRAINT "REL_759f1574b1612768ecbcd6a3e7" UNIQUE ("userId")`);
+        await queryRunner.query(`ALTER TABLE "defaults" ADD CONSTRAINT "FK_759f1574b1612768ecbcd6a3e79" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "usage" DROP COLUMN "workspaces"`);
+        await queryRunner.query(`ALTER TABLE "defaults" DROP COLUMN "workspaceId"`);
         await queryRunner.query(`ALTER TABLE "tag" ADD "organisationId" character varying`);
         await queryRunner.query(`ALTER TABLE "site" ADD "organisationId" character varying`);
         await queryRunner.query(`ALTER TABLE "short" ADD "organisationId" character varying`);
