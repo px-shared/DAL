@@ -14,6 +14,7 @@ export default interface Short {
 
   route: string;
   api: boolean;
+  type: string;
   active: boolean;
   transitive: boolean;
   consent: boolean;
@@ -92,6 +93,10 @@ export const ShortSchema = new EntitySchema<Short>({
     redirect: {
       type: 'varchar',
       nullable: true
+    },
+    type: {
+      type: 'varchar',
+      default: 'URL'
     },
     error: {
       type: 'varchar',
