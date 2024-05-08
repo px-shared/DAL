@@ -28,6 +28,7 @@ import { DomainSubscriber } from '../subscribers/Domain';
 import { QRSubscriber } from '../subscribers/QR';
 import { SegmentSubscriber } from '../subscribers/Segment';
 import { WorkspaceSchema } from '../models/Workspace';
+import { AdminSchema } from '../models/Admin';
 
 const connectionOptions = {
   default: {
@@ -70,7 +71,8 @@ const connectionOptions = {
       IntegrationSchema,
       AssetSchema,
       SegmentSchema,
-      WorkspaceSchema
+      WorkspaceSchema,
+      AdminSchema
     ],
     subscribers: [
       ShortSubscriber,
