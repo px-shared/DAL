@@ -41,6 +41,7 @@ export default interface Short {
   qr: QR;
   site: Site;
 
+  publishedAt: Date;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
@@ -137,6 +138,10 @@ export const ShortSchema = new EntitySchema<Short>({
     events: {
       type: 'int',
       default: 0
+    },
+    publishedAt: {
+      type: 'timestamp',
+      createDate: true
     },
     createdAt: {
       type: 'timestamp',
