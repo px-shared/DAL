@@ -34,6 +34,8 @@ export default interface Admin {
   usersDelta: number;
   organisations: number;
   organisationsDelta: number;
+  generations: number;
+  generationsDelta: number;
 
   organisation: Organisation;
 
@@ -116,6 +118,10 @@ export const AdminSchema = new EntitySchema<Admin>({
       type: 'int',
       default: 0
     },
+    generations: {
+      type: 'int',
+      default: 0
+    },
     sessionsDelta: {
       type: 'int',
       default: 0
@@ -173,6 +179,10 @@ export const AdminSchema = new EntitySchema<Admin>({
       default: 0
     },
     organisationsDelta: {
+      type: 'int',
+      default: 0
+    },
+    generationsDelta: {
       type: 'int',
       default: 0
     },
