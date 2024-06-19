@@ -15,6 +15,7 @@ export default interface Subscription {
   plan: Plan;
   organisation: Organisation;
 
+  contactedAt: Date;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
@@ -72,6 +73,10 @@ export const SubscriptionSchema = new EntitySchema<Subscription>({
       type: 'varchar',
       length: 64,
       nullable: false
+    },
+    contactedAt: {
+      type: 'timestamp',
+      createDate: true
     },
     createdAt: {
       type: 'timestamp',
