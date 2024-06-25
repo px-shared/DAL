@@ -29,6 +29,7 @@ import { QRSubscriber } from '../subscribers/QR';
 import { SegmentSubscriber } from '../subscribers/Segment';
 import { WorkspaceSchema } from '../models/Workspace';
 import { AdminSchema } from '../models/Admin';
+import { UsagePeriodSchema } from '../models/UsagePeriod';
 
 const connectionOptions = {
   default: {
@@ -60,6 +61,7 @@ const connectionOptions = {
       SettingsSchema,
       PreferencesSchema,
       UserSchema,
+      UsagePeriodSchema,
       VerificationSchema,
       UsageSchema,
       SubscriptionSchema,

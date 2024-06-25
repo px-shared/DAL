@@ -16,6 +16,7 @@ import Usage from './Usage';
 import User from './User';
 import Audit from './Audit';
 import Workspace from './Workspace';
+import UsagePeriod from './UsagePeriod';
 
 export default interface Organisation {
   id: string;
@@ -33,6 +34,7 @@ export default interface Organisation {
   attribution: string;
 
   usage: Usage;
+  usagePeriod: UsagePeriod;
   subscription: Subscription;
 
   users: User[];
@@ -136,6 +138,12 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     usage: {
       type: 'one-to-one',
       target: 'Usage',
+      cascade: true,
+      inverseSide: 'organisation'
+    },
+    usagePeriod: {
+      type: 'one-to-one',
+      target: 'UsagePeriod',
       cascade: true,
       inverseSide: 'organisation'
     },
