@@ -44,8 +44,6 @@ const connectionOptions = {
     cache: {
       duration: 15000
     },
-    autoLoadEntities: true,
-    keepConnectionAlive: true,
     extra: {
       poolSize: 20,
       connectionTimeoutMillis: 5000,
