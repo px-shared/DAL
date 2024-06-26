@@ -115,10 +115,10 @@ const transform = (entity: EntitySchema, databaseType: string) => {
   return entity;
 };
 
-connectionOptions.default.entities = connectionOptions.default.entities.map(
-  (entity: EntitySchema<any>) =>
-    transform(entity, connectionOptions.default.type)
-);
+// connectionOptions.default.entities = connectionOptions.default.entities.map(
+//   (entity: EntitySchema<any>) =>
+//     transform(entity, connectionOptions.default.type)
+// );
 
 export const ensureConnection = async (name = 'default') => {
   const connectionManager = getConnectionManager();
