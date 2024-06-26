@@ -22,6 +22,8 @@ export default interface Subscription {
 }
 
 export default class Subscription {
+  // @ts-ignore
+  public static name = 'Subscription';
   constructor(
     providerId: string,
     providerItemId: string,

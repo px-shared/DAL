@@ -23,7 +23,10 @@ export default interface Integration {
   deletedAt: Date;
 }
 
-export default class Integration {}
+export default class Integration {
+  // @ts-ignore
+  public static name = 'Integration';
+}
 
 export const IntegrationSchema = new EntitySchema<Integration>({
   name: 'Integration',

@@ -42,7 +42,10 @@ export default interface Workspace {
   deletedAt: Date;
 }
 
-export default class Workspace {}
+export default class Workspace {
+  // @ts-ignore
+  public static name = 'Workspace';
+}
 
 export const WorkspaceSchema = new EntitySchema<Workspace>({
   name: 'Workspace',

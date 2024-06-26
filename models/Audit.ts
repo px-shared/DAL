@@ -21,6 +21,8 @@ export default interface Audit {
 }
 
 export default class Audit {
+  // @ts-ignore
+  public static name = 'Audit';
   constructor(
     action: 'INSERT' | 'UPDATE' | 'REMOVE',
     entity: string,

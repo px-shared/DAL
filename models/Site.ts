@@ -21,7 +21,10 @@ export default interface Site {
   deletedAt: Date;
 }
 
-export default class Site {}
+export default class Site {
+  // @ts-ignore
+  public static name = 'Site';
+}
 
 export const SiteSchema = new EntitySchema<Site>({
   name: 'Site',

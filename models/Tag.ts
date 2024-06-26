@@ -20,7 +20,10 @@ export default interface Tag {
   deletedAt: Date;
 }
 
-export default class Tag {}
+export default class Tag {
+  // @ts-ignore
+  public static name = 'Tag';
+}
 
 export const TagSchema = new EntitySchema<Tag>({
   name: 'Tag',

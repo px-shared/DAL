@@ -20,6 +20,8 @@ export default interface Domain {
 }
 
 export default class Domain {
+  // @ts-ignore
+  public static name = 'Domain';
   constructor(name: string) {
     this.id = name;
   }

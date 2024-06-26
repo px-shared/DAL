@@ -13,4 +13,7 @@ export default interface Event {
   deletedAt: Date;
 }
 
-export default class Event {}
+export default class Event {
+  // @ts-ignore
+  public static name = 'Event';
+}

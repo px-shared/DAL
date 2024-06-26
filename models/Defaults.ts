@@ -22,7 +22,10 @@ export default interface Defaults {
   deletedAt: Date;
 }
 
-export default class Defaults {}
+export default class Defaults {
+  // @ts-ignore
+  public static name = 'Defaults';
+}
 
 export const DefaultsSchema = new EntitySchema<Defaults>({
   name: 'Defaults',

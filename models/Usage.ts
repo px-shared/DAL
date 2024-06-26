@@ -28,6 +28,8 @@ export default interface Usage {
 }
 
 export default class Usage {
+  // @ts-ignore
+  public static name = 'Usage';
   constructor() {
     this.resetAt = new Date();
     this.resetAt.setDate(this.resetAt.getDate() + 30);

@@ -18,6 +18,8 @@ export default interface Verification {
 // This model is used for sign in emails, but is designed to support other
 // mechanisms in future (e.g. 2FA via text message or short codes)
 export default class Verification {
+  // @ts-ignore
+  public static name = 'Verification';
   constructor(token: string) {
     this.token = token;
     this.expires = new Date();
