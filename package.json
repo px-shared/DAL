@@ -24,5 +24,8 @@
     "bracketSpacing": true,
     "tabWidth": 2,
     "trailingComma": "none"
+  },
+  "browser": {
+    "typeorm": false
   }
 }
