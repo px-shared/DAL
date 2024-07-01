@@ -19,6 +19,7 @@ export default interface Workspace {
   id: number;
 
   name: string;
+  shared: boolean;
 
   settings: Settings;
   organisation: Organisation;
@@ -59,6 +60,11 @@ export const WorkspaceSchema = new EntitySchema<Workspace>({
     name: {
       type: 'varchar',
       nullable: true
+    },
+    shared: {
+      type: 'boolean',
+      default: false,
+      nullable: false
     },
     createdAt: {
       type: 'timestamp',
