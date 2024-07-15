@@ -39,7 +39,7 @@ export const GenerationSchema = new EntitySchema<Generation>({
     createdAt: {
       type: 'timestamp',
       createDate: true,
-      select: false
+      select: true
     },
     updatedAt: {
       type: 'timestamp',
