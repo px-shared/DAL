@@ -30,6 +30,7 @@ import { SegmentSubscriber } from '../subscribers/Segment';
 import { WorkspaceSchema } from '../models/Workspace';
 import { AdminSchema } from '../models/Admin';
 import { UsagePeriodSchema } from '../models/UsagePeriod';
+import { GenerationSchema } from '../models/Generation';
 
 const connectionOptions = {
   default: {
@@ -74,7 +75,8 @@ const connectionOptions = {
       AssetSchema,
       SegmentSchema,
       WorkspaceSchema,
-      AdminSchema
+      AdminSchema,
+      GenerationSchema
     ],
     subscribers: [
       ShortSubscriber,
