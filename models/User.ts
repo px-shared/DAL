@@ -16,6 +16,7 @@ import Site from './Site';
 import Asset from './Asset';
 import Segment from './Segment';
 import Audit from './Audit';
+import Generation from './Generation';
 
 export default interface User {
   id: number;
@@ -42,6 +43,7 @@ export default interface User {
   sites: Site[];
   accessTokens: AccessToken[];
   workspaces: Workspace[];
+  generations: Generation[];
 
   defaults: Defaults[];
   preferences: Preferences;
@@ -190,6 +192,12 @@ export const UserSchema = new EntitySchema<User>({
     assets: {
       type: 'one-to-many',
       target: 'Asset',
+      cascade: true,
+      inverseSide: 'user'
+    },
+    generations: {
+      type: 'one-to-many',
+      target: 'Generation',
       cascade: true,
       inverseSide: 'user'
     },

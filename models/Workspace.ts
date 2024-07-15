@@ -14,6 +14,7 @@ import Site from './Site';
 import Tag from './Tag';
 import User from './User';
 import Defaults from './Defaults';
+import Generation from './Generation';
 
 export default interface Workspace {
   id: number;
@@ -37,6 +38,7 @@ export default interface Workspace {
   sites: Site[];
   accessTokens: AccessToken[];
   integrations: Integration[];
+  generations: Generation[];
 
   createdAt: Date;
   updatedAt: Date;
@@ -150,6 +152,12 @@ export const WorkspaceSchema = new EntitySchema<Workspace>({
     assets: {
       type: 'one-to-many',
       target: 'Asset',
+      cascade: true,
+      inverseSide: 'workspace'
+    },
+    generations: {
+      type: 'one-to-many',
+      target: 'Generation',
       cascade: true,
       inverseSide: 'workspace'
     },
