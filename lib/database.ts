@@ -31,6 +31,7 @@ import { WorkspaceSchema } from '../models/Workspace';
 import { AdminSchema } from '../models/Admin';
 import { UsagePeriodSchema } from '../models/UsagePeriod';
 import { GenerationSchema } from '../models/Generation';
+import { UsageHourlySchema } from '../models/UsageHourly';
 
 const connectionOptions = {
   default: {
@@ -76,7 +77,8 @@ const connectionOptions = {
       SegmentSchema,
       WorkspaceSchema,
       AdminSchema,
-      GenerationSchema
+      GenerationSchema,
+      UsageHourlySchema
     ],
     subscribers: [
       ShortSubscriber,
