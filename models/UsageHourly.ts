@@ -28,6 +28,7 @@ export default interface UsageHourly {
   hour21: number;
   hour22: number;
   hour23: number;
+  meta: any;
   organisation: Organisation;
 
   resetAt: Date;
@@ -149,6 +150,10 @@ export const UsageHourlySchema = new EntitySchema<UsageHourly>({
     hour23: {
       type: 'int',
       default: 0
+    },
+    meta: {
+      type: 'simple-json',
+      nullable: true
     },
     resetAt: {
       type: 'timestamp',
