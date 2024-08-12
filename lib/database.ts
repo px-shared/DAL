@@ -32,6 +32,8 @@ import { AdminSchema } from '../models/Admin';
 import { UsagePeriodSchema } from '../models/UsagePeriod';
 import { GenerationSchema } from '../models/Generation';
 import { UsageHourlySchema } from '../models/UsageHourly';
+import { AffiliateClickSchema } from '../models/AffiliateClick';
+import { AffiliateConversionSchema } from '../models/AffiliateConversion';
 
 const connectionOptions = {
   default: {
@@ -78,7 +80,9 @@ const connectionOptions = {
       WorkspaceSchema,
       AdminSchema,
       GenerationSchema,
-      UsageHourlySchema
+      UsageHourlySchema,
+      AffiliateClickSchema,
+      AffiliateConversionSchema
     ],
     subscribers: [
       ShortSubscriber,
