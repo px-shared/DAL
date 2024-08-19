@@ -8,6 +8,7 @@ import Defaults from './Defaults';
 export default interface Domain {
   id: string;
   verified: boolean;
+  error: string;
 
   user: User;
   defaults: Defaults[];
@@ -38,6 +39,10 @@ export const DomainSchema = new EntitySchema<Domain>({
     verified: {
       type: 'boolean',
       default: false
+    },
+    error: {
+      type: 'varchar',
+      nullable: true
     },
     createdAt: {
       type: 'timestamp',
