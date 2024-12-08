@@ -5,6 +5,7 @@ export default interface Verification {
   id: number;
 
   token: string;
+  redirect: string;
   expires: Date;
   changes: any;
 
@@ -40,6 +41,10 @@ export const VerificationSchema = new EntitySchema<Verification>({
       // The token used verify the request (maybe hashed or encrypted)
       type: 'varchar',
       unique: true
+    },
+    redirect: {
+      type: 'varchar',
+      nullable: true
     },
     expires: {
       // After this time, the request will no longer be valid
