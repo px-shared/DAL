@@ -33,6 +33,7 @@ export default interface Organisation {
   logo: string;
   developer: boolean;
   attribution: string;
+  gclid: string;
 
   usage: Usage;
   usagePeriod: UsagePeriod;
@@ -103,6 +104,10 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       nullable: true
     },
     attribution: {
+      type: 'varchar',
+      nullable: true
+    },
+    gclid: {
       type: 'varchar',
       nullable: true
     },
