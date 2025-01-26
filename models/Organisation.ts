@@ -34,6 +34,7 @@ export default interface Organisation {
   developer: boolean;
   attribution: string;
   gclid: string;
+  qrMode: boolean;
 
   usage: Usage;
   usagePeriod: UsagePeriod;
@@ -110,6 +111,10 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
     gclid: {
       type: 'varchar',
       nullable: true
+    },
+    qrMode: {
+      type: 'boolean',
+      default: false
     },
     developer: {
       type: 'boolean',
