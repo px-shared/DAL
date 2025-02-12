@@ -11,6 +11,7 @@ export default interface Subscription {
   promotionCode: string;
   invoice: any;
   checkout: string;
+  last4: string;
 
   plan: Plan;
   organisation: Organisation;
@@ -75,6 +76,11 @@ export const SubscriptionSchema = new EntitySchema<Subscription>({
       type: 'varchar',
       length: 64,
       nullable: false
+    },
+    last4: {
+      type: 'varchar',
+      length: 64,
+      nullable: true
     },
     contactedAt: {
       type: 'timestamp',
