@@ -81,7 +81,7 @@ export const AuditSchema = new EntitySchema<Audit>({
       type: 'many-to-one',
       target: 'Workspace',
       inverseSide: 'audit',
-      onDelete: 'SET NULL'
+      onDelete: 'CASCADE'
     },
     user: {
       type: 'many-to-one',

@@ -191,7 +191,7 @@ export const ShortSchema = new EntitySchema<Short>({
       type: 'many-to-one',
       target: 'Workspace',
       inverseSide: 'shorts',
-      onDelete: 'SET NULL'
+      onDelete: 'CASCADE'
     },
     tags: {
       type: 'many-to-many',
