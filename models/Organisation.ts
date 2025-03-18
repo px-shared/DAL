@@ -54,7 +54,7 @@ export default class Organisation {
   public static name = 'Organisation';
   constructor(companyEmail: string) {
     this.id = uuidv4();
-    this.companyEmail = companyEmail;
+    this.companyEmail = companyEmail.toLowerCase();
   }
 }
 

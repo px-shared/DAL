@@ -59,7 +59,7 @@ export default class User {
   // @ts-ignore
   public static name = 'User';
   constructor(email: string, verified: Date) {
-    this.email = email;
+    this.email = email.toLowerCase();
     this.verified = verified;
   }
 }
