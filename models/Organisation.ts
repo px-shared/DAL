@@ -35,6 +35,7 @@ export default interface Organisation {
   attribution: string;
   gclid: string;
   qrMode: boolean;
+  entryMode: string;
 
   usage: Usage;
   usagePeriod: UsagePeriod;
@@ -109,6 +110,10 @@ export const OrganisationSchema = new EntitySchema<Organisation>({
       nullable: true
     },
     gclid: {
+      type: 'varchar',
+      nullable: true
+    },
+    entryMode: {
       type: 'varchar',
       nullable: true
     },
