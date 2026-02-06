@@ -52,7 +52,8 @@ const connectionOptions = {
       poolSize: 20,
       connectionTimeoutMillis: 5000,
       query_timeout: 15000,
-      statement_timeout: 15000
+      statement_timeout: 15000,
+      ssl: { rejectUnauthorized: false }
     },
     entities: [
       AuditSchema,
