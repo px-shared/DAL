@@ -15,10 +15,7 @@ export default interface AssistantConversation {
   updatedAt: Date;
 }
 
-export default class AssistantConversation {
-  // @ts-ignore
-  public static name = 'AssistantConversation';
-}
+export default class AssistantConversation {}
 
 export const AssistantConversationSchema =
   new EntitySchema<AssistantConversation>({

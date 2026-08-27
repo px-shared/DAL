@@ -21,10 +21,7 @@ export default interface Assistant {
   deletedAt: Date;
 }
 
-export default class Assistant {
-  // @ts-ignore
-  public static name = 'Assistant';
-}
+export default class Assistant {}
 
 export const AssistantSchema = new EntitySchema<Assistant>({
   name: 'Assistant',

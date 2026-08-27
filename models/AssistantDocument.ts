@@ -21,10 +21,7 @@ export default interface AssistantDocument {
   deletedAt: Date;
 }
 
-export default class AssistantDocument {
-  // @ts-ignore
-  public static name = 'AssistantDocument';
-}
+export default class AssistantDocument {}
 
 export const AssistantDocumentSchema = new EntitySchema<AssistantDocument>({
   name: 'AssistantDocument',

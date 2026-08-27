@@ -22,10 +22,7 @@ export default interface Pixel {
   deletedAt: Date;
 }
 
-export default class Pixel {
-  // @ts-ignore
-  public static name = 'Pixel';
-}
+export default class Pixel {}
 
 export const PixelSchema = new EntitySchema<Pixel>({
   name: 'Pixel',

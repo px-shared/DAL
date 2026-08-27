@@ -16,8 +16,6 @@ export default interface Plan {
 }
 
 export default class Plan {
-  // @ts-ignore
-  public static name = 'Plan';
   constructor(
     providerId: string,
     providerProductId: string,

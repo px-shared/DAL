@@ -49,10 +49,7 @@ export default interface Short {
   build: Function;
 }
 
-export default class Short {
-  // @ts-ignore
-  public static name = 'Short';
-}
+export default class Short {}
 
 Short.prototype.build = function () {
   console.log('this', this);

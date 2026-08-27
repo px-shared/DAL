@@ -20,10 +20,7 @@ export default interface AccessToken {
   deletedAt: Date;
 }
 
-export default class AccessToken {
-  // @ts-ignore
-  public static name = 'AccessToken';
-}
+export default class AccessToken {}
 
 export const AccessTokenSchema = new EntitySchema<AccessToken>({
   name: 'AccessToken',

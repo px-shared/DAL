@@ -17,10 +17,7 @@ export default interface Preferences {
   deletedAt: Date;
 }
 
-export default class Preferences {
-  // @ts-ignore
-  public static name = 'Preferences';
-}
+export default class Preferences {}
 
 export const PreferencesSchema = new EntitySchema<Preferences>({
   name: 'Preferences',

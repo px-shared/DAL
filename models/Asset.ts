@@ -19,10 +19,7 @@ export default interface Asset {
   deletedAt: Date;
 }
 
-export default class Asset {
-  // @ts-ignore
-  public static name = 'Asset';
-}
+export default class Asset {}
 
 export const AssetSchema = new EntitySchema<Asset>({
   name: 'Asset',

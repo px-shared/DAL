@@ -14,10 +14,7 @@ export default interface Settings {
   deletedAt: Date;
 }
 
-export default class Settings {
-  // @ts-ignore
-  public static name = 'Settings';
-}
+export default class Settings {}
 
 export const SettingsSchema = new EntitySchema<Settings>({
   name: 'Settings',

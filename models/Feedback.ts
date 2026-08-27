@@ -17,8 +17,6 @@ export default interface Feedback {
 }
 
 export default class Feedback {
-  // @ts-ignore
-  public static name = 'Feedback';
   constructor(message: string, user: User) {
     this.message = message;
     this.user = user;

@@ -46,8 +46,6 @@ export default interface Admin {
 }
 
 export default class Admin {
-  // @ts-ignore
-  public static name = 'Admin';
   constructor() {}
 }
 

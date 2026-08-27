@@ -23,10 +23,7 @@ export default interface QR {
   deletedAt: Date;
 }
 
-export default class QR {
-  // @ts-ignore
-  public static name = 'QR';
-}
+export default class QR {}
 
 export const QRSchema = new EntitySchema<QR>({
   name: 'QR',

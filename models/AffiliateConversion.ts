@@ -32,10 +32,7 @@ export default interface AffiliateConversion {
   deletedAt: Date;
 }
 
-export default class AffiliateConversion {
-  // @ts-ignore
-  public static name = 'AffiliateConversion';
-}
+export default class AffiliateConversion {}
 
 export const AffiliateConversionSchema = new EntitySchema<AffiliateConversion>({
   name: 'AffiliateConversion',

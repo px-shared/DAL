@@ -18,10 +18,7 @@ export default interface Generation {
   deletedAt: Date;
 }
 
-export default class Generation {
-  // @ts-ignore
-  public static name = 'Generation';
-}
+export default class Generation {}
 
 export const GenerationSchema = new EntitySchema<Generation>({
   name: 'Generation',

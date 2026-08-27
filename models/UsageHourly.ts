@@ -38,8 +38,6 @@ export default interface UsageHourly {
 }
 
 export default class UsageHourly {
-  // @ts-ignore
-  public static name = 'UsageHourly';
   constructor() {
     this.resetAt = new Date();
     this.resetAt.setDate(this.resetAt.getDate() + 1);

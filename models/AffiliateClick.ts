@@ -34,10 +34,7 @@ export default interface AffiliateClick {
   deletedAt: Date;
 }
 
-export default class AffiliateClick {
-  // @ts-ignore
-  public static name = 'AffiliateClick';
-}
+export default class AffiliateClick {}
 
 export const AffiliateClickSchema = new EntitySchema<AffiliateClick>({
   name: 'AffiliateClick',

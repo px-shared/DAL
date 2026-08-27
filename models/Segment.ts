@@ -20,10 +20,7 @@ export default interface Segment {
   deletedAt: Date;
 }
 
-export default class Segment {
-  // @ts-ignore
-  public static name = 'Segment';
-}
+export default class Segment {}
 
 export const SegmentSchema = new EntitySchema<Segment>({
   name: 'Segment',

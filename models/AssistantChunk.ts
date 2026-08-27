@@ -13,10 +13,7 @@ export default interface AssistantChunk {
   createdAt: Date;
 }
 
-export default class AssistantChunk {
-  // @ts-ignore
-  public static name = 'AssistantChunk';
-}
+export default class AssistantChunk {}
 
 // Note: The `embedding` column (vector(1536)) is NOT in EntitySchema.
 // TypeORM 0.2.x has no vector type - managed via raw SQL only.

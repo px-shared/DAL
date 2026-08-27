@@ -51,8 +51,6 @@ export default interface Organisation {
 }
 
 export default class Organisation {
-  // @ts-ignore
-  public static name = 'Organisation';
   constructor(companyEmail: string) {
     this.id = uuidv4();
     this.companyEmail = companyEmail;
