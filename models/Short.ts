@@ -214,5 +214,17 @@ export const ShortSchema = new EntitySchema<Short>({
       cascade: true,
       joinTable: true
     }
-  }
+  },
+  indices: [
+    {
+      // Serves workspace-scoped link listings ordered by creation date, and
+      // lets their total-count query run as an index-only scan. Ascending on
+      // purpose: an all-DESC ORDER BY is served by an Index Scan Backward, and
+      // entity metadata cannot express per-column direction. Kept in step with
+      // migration 1787837506000-add-short-workspace-created-index.
+      name: 'short-workspace-created-idx',
+      columns: ['workspace', 'createdAt', 'id'],
+      where: '"deletedAt" IS NULL'
+    }
+  ]
 });
