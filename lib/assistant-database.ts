@@ -1,4 +1,5 @@
 import { getConnectionManager } from 'typeorm';
+import { databaseSsl } from './ssl';
 import { AssistantSchema } from '../models/Assistant';
 import { AssistantDocumentSchema } from '../models/AssistantDocument';
 import { AssistantChunkSchema } from '../models/AssistantChunk';
@@ -14,7 +15,7 @@ const connectionOptions = {
     password: process.env.ASSISTANT_DB_PASSWORD,
     synchronize: false,
     logging: process.env.TYPEORM_LOGGING == 'true',
-    ssl: { rejectUnauthorized: false },
+    ssl: databaseSsl(),
     extra: {
       poolSize: 10,
       connectionTimeoutMillis: 5000,

@@ -1,4 +1,5 @@
 import { EntitySchema, getConnectionManager } from 'typeorm';
+import { databaseSsl } from './ssl';
 import { OrganisationSchema } from '../models/Organisation';
 import { DomainSchema } from '../models/Domain';
 import { ShortSchema } from '../models/Short';
@@ -48,12 +49,18 @@ const connectionOptions = {
     cache: {
       duration: 15000
     },
+    // `ssl` belongs at the top level, not in `extra`: PostgresDriver.createPool
+    // spreads `extra` OVER its own option object, so an `extra.ssl` silently
+    // wins over this one. Only added for postgres, because the local sqlite
+    // connection has nothing to secure.
+    ...(String(process.env.TYPEORM_CONNECTION || 'postgres') === 'postgres'
+      ? { ssl: databaseSsl() }
+      : {}),
     extra: {
       poolSize: 20,
       connectionTimeoutMillis: 5000,
       query_timeout: 15000,
-      statement_timeout: 15000,
-      ssl: { rejectUnauthorized: false }
+      statement_timeout: 15000
     },
     entities: [
       AuditSchema,
