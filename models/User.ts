@@ -17,6 +17,7 @@ import Asset from './Asset';
 import Segment from './Segment';
 import Audit from './Audit';
 import Generation from './Generation';
+import { named } from './named';
 
 export default interface User {
   id: number;
@@ -69,6 +70,11 @@ export function hash(password: string) {
 export function compare(comparison: string, hash: string) {
   return bcrypt.compare(comparison, hash);
 }
+
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(User, 'User');
 
 export const UserSchema = new EntitySchema<User>({
   name: 'User',

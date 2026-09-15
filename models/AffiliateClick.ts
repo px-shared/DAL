@@ -3,6 +3,7 @@ import Organisation from './Organisation';
 import Workspace from './Workspace';
 import User from './User';
 import AffiliateConversion from './AffiliateConversion';
+import { named } from './named';
 
 export default interface AffiliateClick {
   id: number;
@@ -35,6 +36,11 @@ export default interface AffiliateClick {
 }
 
 export default class AffiliateClick {}
+
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(AffiliateClick, 'AffiliateClick');
 
 export const AffiliateClickSchema = new EntitySchema<AffiliateClick>({
   name: 'AffiliateClick',

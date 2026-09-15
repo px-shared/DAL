@@ -1,5 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import AssistantDocument from './AssistantDocument';
+import { named } from './named';
 
 export default interface AssistantChunk {
   id: number;
@@ -17,6 +18,11 @@ export default class AssistantChunk {}
 
 // Note: The `embedding` column (vector(1536)) is NOT in EntitySchema.
 // TypeORM 0.2.x has no vector type - managed via raw SQL only.
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(AssistantChunk, 'AssistantChunk');
+
 export const AssistantChunkSchema = new EntitySchema<AssistantChunk>({
   name: 'AssistantChunk',
   target: AssistantChunk,

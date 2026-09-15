@@ -18,6 +18,7 @@ import Audit from './Audit';
 import Workspace from './Workspace';
 import UsagePeriod from './UsagePeriod';
 import UsageHourly from './UsageHourly';
+import { named } from './named';
 
 export default interface Organisation {
   id: string;
@@ -56,6 +57,11 @@ export default class Organisation {
     this.companyEmail = companyEmail;
   }
 }
+
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(Organisation, 'Organisation');
 
 export const OrganisationSchema = new EntitySchema<Organisation>({
   name: 'Organisation',

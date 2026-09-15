@@ -4,6 +4,7 @@ import Workspace from './Workspace';
 import User from './User';
 import Short from './Short';
 import Defaults from './Defaults';
+import { named } from './named';
 
 export default interface Domain {
   id: string;
@@ -25,6 +26,11 @@ export default class Domain {
     this.id = name;
   }
 }
+
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(Domain, 'Domain');
 
 export const DomainSchema = new EntitySchema<Domain>({
   name: 'Domain',

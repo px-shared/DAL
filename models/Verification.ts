@@ -1,5 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import User from './User';
+import { named } from './named';
 
 export default interface Verification {
   id: number;
@@ -25,6 +26,11 @@ export default class Verification {
     this.expires.setDate(this.expires.getDate() + 7);
   }
 }
+
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(Verification, 'Verification');
 
 export const VerificationSchema = new EntitySchema<Verification>({
   name: 'Verification',

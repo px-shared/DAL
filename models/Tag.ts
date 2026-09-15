@@ -4,6 +4,7 @@ import Organisation from './Organisation';
 import Workspace from './Workspace';
 import Short from './Short';
 import User from './User';
+import { named } from './named';
 
 export default interface Tag {
   id: string;
@@ -21,6 +22,11 @@ export default interface Tag {
 }
 
 export default class Tag {}
+
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(Tag, 'Tag');
 
 export const TagSchema = new EntitySchema<Tag>({
   name: 'Tag',

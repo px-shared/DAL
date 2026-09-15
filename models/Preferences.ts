@@ -1,5 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import User from './User';
+import { named } from './named';
 
 export default interface Preferences {
   id: number;
@@ -18,6 +19,11 @@ export default interface Preferences {
 }
 
 export default class Preferences {}
+
+// The schema names this class's relations by string, and TypeORM matches
+// those strings against the class NAME. Pin it so a minifier cannot
+// rename it out from under them. See models/named.ts.
+named(Preferences, 'Preferences');
 
 export const PreferencesSchema = new EntitySchema<Preferences>({
   name: 'Preferences',
